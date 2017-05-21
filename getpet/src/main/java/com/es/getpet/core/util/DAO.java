@@ -7,9 +7,6 @@ import javax.persistence.Query;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-import com.es.getpet.core.ed.Adotante;
-import com.es.getpet.core.ed.Animal;
-
 public abstract class DAO<E extends ED> {
 
 	public E salva(E ed) {

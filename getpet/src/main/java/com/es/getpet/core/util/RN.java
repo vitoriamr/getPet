@@ -32,7 +32,6 @@ public class RN<E extends ED> {
         return bd.atualiza(ed);
     }
 
-/*
     public List<E> lista(E ed, PropriedadesLista pl) {
         val.validaLista(ed);
         return bd.lista(ed, pl);
@@ -47,6 +46,5 @@ public class RN<E extends ED> {
         val.validaConsulta(ed);
         return bd.consulta(ed);
     }
-*/
 
 }

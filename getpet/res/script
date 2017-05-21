@@ -5,7 +5,7 @@
 -- Dumped from database version 9.6.2
 -- Dumped by pg_dump version 9.6.2
 
--- Started on 2017-05-21 12:04:12 -03
+-- Started on 2017-05-21 13:29:15 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -40,7 +40,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 186 (class 1259 OID 16587)
+-- TOC entry 186 (class 1259 OID 16621)
 -- Name: adotante; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -62,7 +62,7 @@ CREATE TABLE adotante (
 ALTER TABLE adotante OWNER TO postgres;
 
 --
--- TOC entry 185 (class 1259 OID 16585)
+-- TOC entry 185 (class 1259 OID 16619)
 -- Name: adotante_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -86,7 +86,7 @@ ALTER SEQUENCE adotante_id_seq OWNED BY adotante.id;
 
 
 --
--- TOC entry 188 (class 1259 OID 16598)
+-- TOC entry 188 (class 1259 OID 16632)
 -- Name: animal; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -108,7 +108,7 @@ CREATE TABLE animal (
 ALTER TABLE animal OWNER TO postgres;
 
 --
--- TOC entry 187 (class 1259 OID 16596)
+-- TOC entry 187 (class 1259 OID 16630)
 -- Name: animal_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -132,7 +132,7 @@ ALTER SEQUENCE animal_id_seq OWNED BY animal.id;
 
 
 --
--- TOC entry 190 (class 1259 OID 16609)
+-- TOC entry 190 (class 1259 OID 16643)
 -- Name: cuidador; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -153,7 +153,7 @@ CREATE TABLE cuidador (
 ALTER TABLE cuidador OWNER TO postgres;
 
 --
--- TOC entry 189 (class 1259 OID 16607)
+-- TOC entry 189 (class 1259 OID 16641)
 -- Name: cuidador_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -177,7 +177,7 @@ ALTER SEQUENCE cuidador_id_seq OWNED BY cuidador.id;
 
 
 --
--- TOC entry 2058 (class 2604 OID 16590)
+-- TOC entry 2058 (class 2604 OID 16624)
 -- Name: adotante id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -185,7 +185,7 @@ ALTER TABLE ONLY adotante ALTER COLUMN id SET DEFAULT nextval('adotante_id_seq':
 
 
 --
--- TOC entry 2059 (class 2604 OID 16601)
+-- TOC entry 2059 (class 2604 OID 16635)
 -- Name: animal id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -193,7 +193,7 @@ ALTER TABLE ONLY animal ALTER COLUMN id SET DEFAULT nextval('animal_id_seq'::reg
 
 
 --
--- TOC entry 2060 (class 2604 OID 16612)
+-- TOC entry 2060 (class 2604 OID 16646)
 -- Name: cuidador id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -201,7 +201,7 @@ ALTER TABLE ONLY cuidador ALTER COLUMN id SET DEFAULT nextval('cuidador_id_seq':
 
 
 --
--- TOC entry 2185 (class 0 OID 16587)
+-- TOC entry 2185 (class 0 OID 16621)
 -- Dependencies: 186
 -- Data for Name: adotante; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -221,7 +221,7 @@ SELECT pg_catalog.setval('adotante_id_seq', 1, true);
 
 
 --
--- TOC entry 2187 (class 0 OID 16598)
+-- TOC entry 2187 (class 0 OID 16632)
 -- Dependencies: 188
 -- Data for Name: animal; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -241,7 +241,7 @@ SELECT pg_catalog.setval('animal_id_seq', 1, true);
 
 
 --
--- TOC entry 2189 (class 0 OID 16609)
+-- TOC entry 2189 (class 0 OID 16643)
 -- Dependencies: 190
 -- Data for Name: cuidador; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -261,7 +261,7 @@ SELECT pg_catalog.setval('cuidador_id_seq', 1, true);
 
 
 --
--- TOC entry 2062 (class 2606 OID 16595)
+-- TOC entry 2062 (class 2606 OID 16629)
 -- Name: adotante adotante_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -270,7 +270,7 @@ ALTER TABLE ONLY adotante
 
 
 --
--- TOC entry 2064 (class 2606 OID 16606)
+-- TOC entry 2064 (class 2606 OID 16640)
 -- Name: animal animal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -279,7 +279,7 @@ ALTER TABLE ONLY animal
 
 
 --
--- TOC entry 2066 (class 2606 OID 16617)
+-- TOC entry 2066 (class 2606 OID 16651)
 -- Name: cuidador cuidador_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -287,7 +287,7 @@ ALTER TABLE ONLY cuidador
     ADD CONSTRAINT cuidador_pkey PRIMARY KEY (id);
 
 
--- Completed on 2017-05-21 12:04:12 -03
+-- Completed on 2017-05-21 13:29:16 -03
 
 --
 -- PostgreSQL database dump complete
