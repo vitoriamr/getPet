@@ -5,7 +5,7 @@
 -- Dumped from database version 9.6.2
 -- Dumped by pg_dump version 9.6.2
 
--- Started on 2017-05-20 21:06:23 -03
+-- Started on 2017-05-21 10:59:06 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -85,7 +85,7 @@ ALTER SEQUENCE adotante_id_seq OWNED BY adotante.id;
 
 
 --
--- TOC entry 190 (class 1259 OID 16441)
+-- TOC entry 190 (class 1259 OID 16542)
 -- Name: animal; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -93,13 +93,13 @@ CREATE TABLE animal (
     id bigint NOT NULL,
     castrado boolean,
     doencaslimitacoes character varying(255),
-    especie smallint,
+    especie smallint NOT NULL,
     idade smallint,
-    nome character varying(255) NOT NULL,
+    nome character varying(200) NOT NULL,
     obs character varying(255),
     raca character varying(255),
     sexo smallint,
-    tamanho smallint,
+    tamanho smallint NOT NULL,
     temperamento smallint
 );
 
@@ -107,7 +107,7 @@ CREATE TABLE animal (
 ALTER TABLE animal OWNER TO postgres;
 
 --
--- TOC entry 189 (class 1259 OID 16439)
+-- TOC entry 189 (class 1259 OID 16540)
 -- Name: animal_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -184,7 +184,7 @@ ALTER TABLE ONLY adotante ALTER COLUMN id SET DEFAULT nextval('adotante_id_seq':
 
 
 --
--- TOC entry 2061 (class 2604 OID 16444)
+-- TOC entry 2061 (class 2604 OID 16545)
 -- Name: animal id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -221,13 +221,19 @@ SELECT pg_catalog.setval('adotante_id_seq', 2, true);
 
 
 --
--- TOC entry 2190 (class 0 OID 16441)
+-- TOC entry 2190 (class 0 OID 16542)
 -- Dependencies: 190
 -- Data for Name: animal; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY animal (id, castrado, doencaslimitacoes, especie, idade, nome, obs, raca, sexo, tamanho, temperamento) FROM stdin;
-1	f	\N	0	14	Belinha	\N	Poodle	0	1	2
+1	t	\N	0	6	Belinha	\N	Pitbul	0	1	\N
+2	f	\N	0	6	Raika	\N	Pitbul	0	2	\N
+3	f	\N	0	6	Raika	\N	Pitbul	0	2	\N
+4	f	\N	0	6	Raika	\N	Pitbul	0	2	\N
+5	f	\N	0	6	Raika	\N	Pitbul	0	2	\N
+6	f	\N	0	6	Raika	\N	Pitbul	0	2	\N
+7	f	\N	0	6	Hanna	\N	Pitbul	0	2	\N
 \.
 
 
@@ -237,7 +243,7 @@ COPY animal (id, castrado, doencaslimitacoes, especie, idade, nome, obs, raca, s
 -- Name: animal_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('animal_id_seq', 1, true);
+SELECT pg_catalog.setval('animal_id_seq', 7, true);
 
 
 --
@@ -260,7 +266,7 @@ SELECT pg_catalog.setval('cuidador_id_seq', 1, false);
 
 
 --
--- TOC entry 2067 (class 2606 OID 16449)
+-- TOC entry 2067 (class 2606 OID 16550)
 -- Name: animal animal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -286,7 +292,7 @@ ALTER TABLE ONLY cuidador
     ADD CONSTRAINT pk_cuidador PRIMARY KEY (id);
 
 
--- Completed on 2017-05-20 21:06:23 -03
+-- Completed on 2017-05-21 10:59:06 -03
 
 --
 -- PostgreSQL database dump complete

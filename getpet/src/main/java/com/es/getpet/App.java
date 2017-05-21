@@ -1,22 +1,22 @@
 package com.es.getpet;
 
-import com.es.getpet.core.bd.AnimalDAO;
 import com.es.getpet.core.ed.Animal;
+import com.es.getpet.core.rn.AnimalRN;
 
 public class App
 {
     public static void main( String[] args )
     {
     	Animal animal = new Animal();
-    	animal.setNome("Belinha");
+    	animal.setNome("Hanna");
     	animal.setSexo((short)0);
     	animal.setCastrado(false);
     	animal.setEspecie((short) 0);
-    	animal.setIdade((short) 0);
-    	animal.setRaca("Poodle");
+    	animal.setIdade((short) 6);
+    	animal.setRaca("Pitbul");
+    	animal.setTamanho((short) 2);
 
-    	AnimalDAO animalDAO = new AnimalDAO();
-    	animalDAO.salva(animal);
-
+    	AnimalRN animalRN = new AnimalRN();
+    	animalRN.salva(animal);
     }
 }

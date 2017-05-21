@@ -1,30 +1,19 @@
 package com.es.getpet.core.ed;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.es.getpet.core.util.ED;
 
 @Entity
 @Table(name = "animal", catalog = "", schema = "public")
-@SequenceGenerator(name = "empresa_id", sequenceName = "animal_id_seq", allocationSize = 1)
-public class Animal {
+public class Animal extends ED {
 
-	@Id
-	@Basic(optional = false)
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
-
-    @Basic(optional = false)
-    @Column(name = "nome")
+    @Column(nullable = false, length = 200)
 	private String nome;
 
-    @Column(name = "especie")
+    @Column(nullable = false)
 	private Short especie;
 
     @Column(name = "sexo")
@@ -39,7 +28,7 @@ public class Animal {
     @Column(name = "idade")
 	private Short idade;
 
-    @Column(name = "tamanho")
+    @Column(name = "tamanho", nullable = false)
 	private Short tamanho;
 
     @Column(name = "temperamento")
@@ -50,14 +39,6 @@ public class Animal {
 
     @Column(name = "obs")
 	private String obs;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getNome() {
 		return nome;
