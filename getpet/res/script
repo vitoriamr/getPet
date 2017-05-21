@@ -5,7 +5,7 @@
 -- Dumped from database version 9.6.2
 -- Dumped by pg_dump version 9.6.2
 
--- Started on 2017-05-21 10:59:06 -03
+-- Started on 2017-05-21 12:04:12 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -25,7 +25,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2197 (class 0 OID 0)
+-- TOC entry 2196 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -40,28 +40,29 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 186 (class 1259 OID 16397)
+-- TOC entry 186 (class 1259 OID 16587)
 -- Name: adotante; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE adotante (
     id bigint NOT NULL,
-    nome character varying(100) COLLATE pg_catalog."pt_BR.utf8" NOT NULL,
-    email character varying(100) COLLATE pg_catalog."pt_BR.utf8",
-    cpf bigint NOT NULL,
-    telefone character varying(15) COLLATE pg_catalog."pt_BR.utf8",
+    cpf bigint,
+    email character varying(100),
+    endereco character varying(200) NOT NULL,
     ja_adotou boolean NOT NULL,
-    qte_animais integer DEFAULT 0 NOT NULL,
-    obs text COLLATE pg_catalog."pt_BR.utf8",
-    login_name character varying(50) COLLATE pg_catalog."pt_BR.utf8",
-    senha character varying(16) COLLATE pg_catalog."pt_BR.utf8"
+    loginname character varying(100) NOT NULL,
+    nome character varying(200) NOT NULL,
+    obs character varying(255),
+    qte_animais integer NOT NULL,
+    senha character varying(15) NOT NULL,
+    telefone character varying(15)
 );
 
 
 ALTER TABLE adotante OWNER TO postgres;
 
 --
--- TOC entry 185 (class 1259 OID 16395)
+-- TOC entry 185 (class 1259 OID 16585)
 -- Name: adotante_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -76,7 +77,7 @@ CREATE SEQUENCE adotante_id_seq
 ALTER TABLE adotante_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2198 (class 0 OID 0)
+-- TOC entry 2197 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: adotante_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -85,7 +86,7 @@ ALTER SEQUENCE adotante_id_seq OWNED BY adotante.id;
 
 
 --
--- TOC entry 190 (class 1259 OID 16542)
+-- TOC entry 188 (class 1259 OID 16598)
 -- Name: animal; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -107,7 +108,7 @@ CREATE TABLE animal (
 ALTER TABLE animal OWNER TO postgres;
 
 --
--- TOC entry 189 (class 1259 OID 16540)
+-- TOC entry 187 (class 1259 OID 16596)
 -- Name: animal_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -122,8 +123,8 @@ CREATE SEQUENCE animal_id_seq
 ALTER TABLE animal_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2199 (class 0 OID 0)
--- Dependencies: 189
+-- TOC entry 2198 (class 0 OID 0)
+-- Dependencies: 187
 -- Name: animal_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -131,28 +132,28 @@ ALTER SEQUENCE animal_id_seq OWNED BY animal.id;
 
 
 --
--- TOC entry 188 (class 1259 OID 16419)
+-- TOC entry 190 (class 1259 OID 16609)
 -- Name: cuidador; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE cuidador (
     id bigint NOT NULL,
-    nome character varying(100) COLLATE pg_catalog."pt_BR.utf8" NOT NULL,
-    endereco character varying(300) COLLATE pg_catalog."pt_BR.utf8" NOT NULL,
-    cpf bigint,
     cnpj bigint,
-    telefone character varying(15),
-    email character varying(100) COLLATE pg_catalog."pt_BR.utf8",
-    obs text COLLATE pg_catalog."pt_BR.utf8",
-    login_name character varying(50) COLLATE pg_catalog."pt_BR.utf8" NOT NULL,
-    senha character varying(16) COLLATE pg_catalog."pt_BR.utf8" NOT NULL
+    cpf bigint,
+    email character varying(100),
+    endereco character varying(200) NOT NULL,
+    loginname character varying(100) NOT NULL,
+    nome character varying(200) NOT NULL,
+    obs character varying(255),
+    senha character varying(100) NOT NULL,
+    telefone character varying(15)
 );
 
 
 ALTER TABLE cuidador OWNER TO postgres;
 
 --
--- TOC entry 187 (class 1259 OID 16417)
+-- TOC entry 189 (class 1259 OID 16607)
 -- Name: cuidador_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -167,8 +168,8 @@ CREATE SEQUENCE cuidador_id_seq
 ALTER TABLE cuidador_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2200 (class 0 OID 0)
--- Dependencies: 187
+-- TOC entry 2199 (class 0 OID 0)
+-- Dependencies: 189
 -- Name: cuidador_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -176,7 +177,7 @@ ALTER SEQUENCE cuidador_id_seq OWNED BY cuidador.id;
 
 
 --
--- TOC entry 2059 (class 2604 OID 16407)
+-- TOC entry 2058 (class 2604 OID 16590)
 -- Name: adotante id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -184,7 +185,7 @@ ALTER TABLE ONLY adotante ALTER COLUMN id SET DEFAULT nextval('adotante_id_seq':
 
 
 --
--- TOC entry 2061 (class 2604 OID 16545)
+-- TOC entry 2059 (class 2604 OID 16601)
 -- Name: animal id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -192,7 +193,7 @@ ALTER TABLE ONLY animal ALTER COLUMN id SET DEFAULT nextval('animal_id_seq'::reg
 
 
 --
--- TOC entry 2060 (class 2604 OID 16422)
+-- TOC entry 2060 (class 2604 OID 16612)
 -- Name: cuidador id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -200,73 +201,76 @@ ALTER TABLE ONLY cuidador ALTER COLUMN id SET DEFAULT nextval('cuidador_id_seq':
 
 
 --
--- TOC entry 2186 (class 0 OID 16397)
+-- TOC entry 2185 (class 0 OID 16587)
 -- Dependencies: 186
 -- Data for Name: adotante; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY adotante (id, nome, email, cpf, telefone, ja_adotou, qte_animais, obs, login_name, senha) FROM stdin;
-1	João da Silva	joaodasilva@email.com	91395380015	(51)99290-5701	t	2	\N	joaosilva	joao
-2	Camila Arpini	camilaarpini@email.com	91456465	234234	t	1	\N	camilaarpini	camila
+COPY adotante (id, cpf, email, endereco, ja_adotou, loginname, nome, obs, qte_animais, senha, telefone) FROM stdin;
+1	\N	\N	Rua Mario Totta, 588	t	camiladorneles	Camila Dorneles	\N	0	camila	\N
+\.
+
+
+--
+-- TOC entry 2200 (class 0 OID 0)
+-- Dependencies: 185
+-- Name: adotante_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('adotante_id_seq', 1, true);
+
+
+--
+-- TOC entry 2187 (class 0 OID 16598)
+-- Dependencies: 188
+-- Data for Name: animal; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY animal (id, castrado, doencaslimitacoes, especie, idade, nome, obs, raca, sexo, tamanho, temperamento) FROM stdin;
+1	f	\N	0	6	Hanna	\N	Pitbul	0	2	\N
 \.
 
 
 --
 -- TOC entry 2201 (class 0 OID 0)
--- Dependencies: 185
--- Name: adotante_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Dependencies: 187
+-- Name: animal_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('adotante_id_seq', 2, true);
+SELECT pg_catalog.setval('animal_id_seq', 1, true);
 
 
 --
--- TOC entry 2190 (class 0 OID 16542)
+-- TOC entry 2189 (class 0 OID 16609)
 -- Dependencies: 190
--- Data for Name: animal; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: cuidador; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY animal (id, castrado, doencaslimitacoes, especie, idade, nome, obs, raca, sexo, tamanho, temperamento) FROM stdin;
-1	t	\N	0	6	Belinha	\N	Pitbul	0	1	\N
-2	f	\N	0	6	Raika	\N	Pitbul	0	2	\N
-3	f	\N	0	6	Raika	\N	Pitbul	0	2	\N
-4	f	\N	0	6	Raika	\N	Pitbul	0	2	\N
-5	f	\N	0	6	Raika	\N	Pitbul	0	2	\N
-6	f	\N	0	6	Raika	\N	Pitbul	0	2	\N
-7	f	\N	0	6	Hanna	\N	Pitbul	0	2	\N
+COPY cuidador (id, cnpj, cpf, email, endereco, loginname, nome, obs, senha, telefone) FROM stdin;
+1	\N	\N	\N	Av: Plinio Brasil Milano, 256 Auxiliadora Porto Alegre	joaosilva	João da Silva	\N	joao	\N
 \.
 
 
 --
 -- TOC entry 2202 (class 0 OID 0)
 -- Dependencies: 189
--- Name: animal_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('animal_id_seq', 7, true);
-
-
---
--- TOC entry 2188 (class 0 OID 16419)
--- Dependencies: 188
--- Data for Name: cuidador; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY cuidador (id, nome, endereco, cpf, cnpj, telefone, email, obs, login_name, senha) FROM stdin;
-\.
-
-
---
--- TOC entry 2203 (class 0 OID 0)
--- Dependencies: 187
 -- Name: cuidador_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('cuidador_id_seq', 1, false);
+SELECT pg_catalog.setval('cuidador_id_seq', 1, true);
 
 
 --
--- TOC entry 2067 (class 2606 OID 16550)
+-- TOC entry 2062 (class 2606 OID 16595)
+-- Name: adotante adotante_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY adotante
+    ADD CONSTRAINT adotante_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2064 (class 2606 OID 16606)
 -- Name: animal animal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -275,24 +279,15 @@ ALTER TABLE ONLY animal
 
 
 --
--- TOC entry 2063 (class 2606 OID 16409)
--- Name: adotante pk_adotante; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY adotante
-    ADD CONSTRAINT pk_adotante PRIMARY KEY (id);
-
-
---
--- TOC entry 2065 (class 2606 OID 16427)
--- Name: cuidador pk_cuidador; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2066 (class 2606 OID 16617)
+-- Name: cuidador cuidador_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY cuidador
-    ADD CONSTRAINT pk_cuidador PRIMARY KEY (id);
+    ADD CONSTRAINT cuidador_pkey PRIMARY KEY (id);
 
 
--- Completed on 2017-05-21 10:59:06 -03
+-- Completed on 2017-05-21 12:04:12 -03
 
 --
 -- PostgreSQL database dump complete

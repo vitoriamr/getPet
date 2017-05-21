@@ -12,6 +12,8 @@
 		<property name="show_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<mapping class="com.es.getpet.core.ed.Animal" />
+		<mapping class="com.es.getpet.core.ed.Cuidador" />
+		<mapping class="com.es.getpet.core.ed.Adotante" />
 
 	</session-factory>
 </hibernate-configuration>

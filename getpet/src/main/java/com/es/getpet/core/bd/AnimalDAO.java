@@ -40,6 +40,4 @@ public class AnimalDAO extends DAO<Animal> {
         return r;
     }
 
-
-
 }

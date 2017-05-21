@@ -16,28 +16,28 @@ public class Animal extends ED {
     @Column(nullable = false)
 	private Short especie;
 
-    @Column(name = "sexo")
+    @Column
 	private Short sexo;
 
-    @Column(name = "castrado")
+    @Column
 	private Boolean castrado;
 
-    @Column(name = "raca")
+    @Column
 	private String raca;
 
-    @Column(name = "idade")
+    @Column
 	private Short idade;
 
-    @Column(name = "tamanho", nullable = false)
+    @Column(nullable = false)
 	private Short tamanho;
 
-    @Column(name = "temperamento")
+    @Column
 	private Short temperamento;
 
-    @Column(name = "doencasLimitacoes")
+    @Column
 	private String doencasLimitacoes;
 
-    @Column(name = "obs")
+    @Column
 	private String obs;
 
 	public String getNome() {

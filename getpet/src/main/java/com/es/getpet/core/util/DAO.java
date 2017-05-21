@@ -7,6 +7,7 @@ import javax.persistence.Query;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
+import com.es.getpet.core.ed.Adotante;
 import com.es.getpet.core.ed.Animal;
 
 public abstract class DAO<E extends ED> {
@@ -106,9 +107,11 @@ public abstract class DAO<E extends ED> {
         return animal;
     }
 
-    public abstract List<E> lista(E ed, PropriedadesLista pl);
+	public E consulta(E ed) {
+		return null;
+	}
 
-    public abstract E consulta(E ed);
+    public abstract List<E> lista(E ed, PropriedadesLista pl);
 
     public abstract List<E> busca(E ed, PropriedadesLista pl);
 
