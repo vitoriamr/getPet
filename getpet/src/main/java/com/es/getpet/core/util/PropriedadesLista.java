@@ -3,11 +3,6 @@ package com.es.getpet.core.util;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author felipe
- * @param <Ordem>
- */
 public class PropriedadesLista {
 
     private List<Ordem> listaOrdenacao;

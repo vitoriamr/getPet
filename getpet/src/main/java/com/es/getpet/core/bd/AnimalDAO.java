@@ -1,7 +1,5 @@
 package com.es.getpet.core.bd;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -13,12 +11,11 @@ import org.hibernate.criterion.Junction;
 import org.hibernate.criterion.Restrictions;
 
 import com.es.getpet.core.ed.Animal;
+import com.es.getpet.core.util.HibernateUtil;
 import com.es.getpet.core.util.PropriedadesLista;
 import com.es.getpet.core.util.TipoJuncao;
 
 public class AnimalDAO {
-
-	private Method gs;
 
     public Animal salva(Animal animal) {
         Session session = getSession();
@@ -157,8 +154,8 @@ public class AnimalDAO {
     private Session getSession() {
         Session session;
         try {
-            session = (Session) gs.invoke(null);
-        } catch (SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+        	session = HibernateUtil.getSession();
+        } catch (SecurityException | IllegalArgumentException ex) {
             session = null;
         }
         return session;

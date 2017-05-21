@@ -8,3 +8,4 @@ com/es/getpet/core/ed/Animal.class
 com/es/getpet/core/util/TipoOrdem.class
 com/es/getpet/core/util/Ordem.class
 com/es/getpet/core/enuns/Especie.class
+com/es/getpet/core/util/HibernateUtil.class
