@@ -2,6 +2,7 @@ package com.es.getpet.core.ed;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.es.getpet.core.util.ED;
@@ -39,6 +40,9 @@ public class Animal extends ED {
 
     @Column
 	private String obs;
+
+    @OneToOne
+    private Cuidador cuidador;
 
 	public String getNome() {
 		return nome;
@@ -120,5 +124,12 @@ public class Animal extends ED {
 		this.obs = obs;
 	}
 
+	public Cuidador getCuidador() {
+		return cuidador;
+	}
+
+	public void setCuidador(Cuidador cuidador) {
+		this.cuidador = cuidador;
+	}
 
 }

@@ -24,4 +24,8 @@ public class HibernateUtil {
 		return sessionFactory.getCurrentSession();
 	}
 
+	public static void fechaSessao() {
+		sessionFactory.close();
+	}
+
 }

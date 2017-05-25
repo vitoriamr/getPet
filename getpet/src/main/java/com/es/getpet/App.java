@@ -8,6 +8,7 @@ import com.es.getpet.core.ed.Cuidador;
 import com.es.getpet.core.rn.AdotanteRN;
 import com.es.getpet.core.rn.AnimalRN;
 import com.es.getpet.core.rn.CuidadorRN;
+import com.es.getpet.core.util.HibernateUtil;
 
 public class App
 {
@@ -46,6 +47,7 @@ public class App
     	cuidador.setEndereco("Av: Plinio Brasil Milano, 256 Auxiliadora Porto Alegre");
     	cuidador.setLoginName("joaosilva");
     	cuidador.setSenha("joao");
+    	cuidador.setAnimal(animal);
 
     	CuidadorRN cuidadorRN = new CuidadorRN();
     	cuidadorRN.salva(cuidador);
@@ -105,6 +107,9 @@ public class App
     	for (Adotante a : listaAdotante) {
     		System.out.println(a.getNome());
     	}
+
+    	HibernateUtil.fechaSessao();
+
 
     }
 }

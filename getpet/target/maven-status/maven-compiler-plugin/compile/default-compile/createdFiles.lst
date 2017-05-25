@@ -5,6 +5,7 @@ com/es/getpet/core/rn/AnimalRN.class
 com/es/getpet/core/bd/AdotanteDAO.class
 com/es/getpet/App.class
 com/es/getpet/core/util/VAL.class
+com/es/getpet/core/ed/Pessoa.class
 com/es/getpet/core/util/DAO.class
 com/es/getpet/core/util/TipoOrdem.class
 com/es/getpet/core/enuns/Especie.class
