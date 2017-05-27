@@ -47,4 +47,8 @@ public class RN<E extends ED> {
         return bd.consulta(ed);
     }
 
+    public final void finaliza() {
+    	HibernateUtil.fechaSessao();
+    }
+
 }

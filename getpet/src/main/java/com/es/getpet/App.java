@@ -12,8 +12,7 @@ import com.es.getpet.core.util.HibernateUtil;
 
 public class App
 {
-    public static void main( String[] args )
-    {
+    public static void main( String[] args ) {
     	Animal animal = new Animal();
     	animal.setNome("Hanna");
     	animal.setSexo((short)0);
