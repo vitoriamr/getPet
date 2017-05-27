@@ -22,7 +22,7 @@ public class VAL<E extends ED> {
         }
     }
 
-    public void validaSalva(E ed){
+    public void validaSalva(E ed) {
         if (ed == null) {
             throw new IllegalArgumentException("O objeto não pode ser nulo.");
         }

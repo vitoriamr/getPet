@@ -5,22 +5,25 @@ import java.util.List;
 import com.es.getpet.core.ed.Adotante;
 import com.es.getpet.core.ed.Animal;
 import com.es.getpet.core.ed.Cuidador;
+import com.es.getpet.core.enuns.Especie;
+import com.es.getpet.core.enuns.Sexo;
+import com.es.getpet.core.enuns.Tamanho;
 import com.es.getpet.core.rn.AdotanteRN;
 import com.es.getpet.core.rn.AnimalRN;
 import com.es.getpet.core.rn.CuidadorRN;
 import com.es.getpet.core.util.HibernateUtil;
 
-public class App
-{
+public class App {
+
     public static void main( String[] args ) {
     	Animal animal = new Animal();
     	animal.setNome("Hanna");
-    	animal.setSexo((short)0);
+    	animal.setSexo(Sexo.FEMEA);
     	animal.setCastrado(false);
-    	animal.setEspecie((short) 0);
+    	animal.setEspecie(Especie.CAO);
     	animal.setIdade((short) 6);
     	animal.setRaca("Pitbul");
-    	animal.setTamanho((short) 2);
+    	animal.setTamanho(Tamanho.MEDIO);
 
     	AnimalRN animalRN = new AnimalRN();
     	animalRN.salva(animal);
@@ -30,7 +33,7 @@ public class App
     	List<Animal> lista = animalRN.busca(animal1, null);
 
     	for (Animal a : lista) {
-    		System.out.println(a.getNome());
+    		System.out.println(a.getNome()+ " " + a.getEspecie());
     	}
 
     	Animal animal2 = new Animal();

@@ -2,29 +2,38 @@ package com.es.getpet.core.enuns;
 
 public enum Sexo {
 
-	MASCULINO((short) 0),
-	FEMININO((short) 1);
+	MACHO((short) 0, "Macho"),
+	FEMEA((short) 1, "Fêmea");
 
 	private short codigoSexo;
+	private String descricao;
 
-	Sexo(short codigoSexo) {
+	Sexo(short codigoSexo, String descricao) {
 		this.codigoSexo = codigoSexo;
+		this.descricao = descricao;
 	}
 
-	public short getCodigoEspecie() {
+	public short getCodigoSexo() {
 		return codigoSexo;
 	}
 
-	public static Sexo parse(short codigoSexo) {
+	public static Sexo parse(Short codigoSexo) {
 		Sexo result;
-		if (codigoSexo == 0) {
-			result = MASCULINO;
+		if (codigoSexo == null) {
+			result = null;
+		} else if (codigoSexo == 0) {
+			result = MACHO;
 		} else if (codigoSexo == 1) {
-			result = FEMININO;
+			result = FEMEA;
 		} else {
 			result = null;
 		}
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		return descricao;
 	}
 
 }

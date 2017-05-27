@@ -5,6 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.es.getpet.core.enuns.Especie;
+import com.es.getpet.core.enuns.Sexo;
+import com.es.getpet.core.enuns.Tamanho;
+import com.es.getpet.core.enuns.Temperamento;
+import com.es.getpet.core.enuns.Unidade;
 import com.es.getpet.core.util.ED;
 
 @Entity
@@ -29,6 +34,9 @@ public class Animal extends ED {
     @Column
 	private Short idade;
 
+    @Column
+    private Short unidade;
+
     @Column(nullable = false)
 	private Short tamanho;
 
@@ -52,20 +60,20 @@ public class Animal extends ED {
 		this.nome = nome;
 	}
 
-	public Short getEspecie() {
-		return especie;
+	public Especie getEspecie() {
+		return Especie.parse(especie);
 	}
 
-	public void setEspecie(Short especie) {
-		this.especie = especie;
+	public void setEspecie(Especie especie) {
+		this.especie = especie != null ? especie.getCodigoEspecie() : null;
 	}
 
-	public Short getSexo() {
-		return sexo;
+	public Sexo getSexo() {
+		return Sexo.parse(sexo);
 	}
 
-	public void setSexo(Short sexo) {
-		this.sexo = sexo;
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo != null ? sexo.getCodigoSexo() : null;
 	}
 
 	public Boolean getCastrado() {
@@ -92,20 +100,28 @@ public class Animal extends ED {
 		this.idade = idade;
 	}
 
-	public Short getTamanho() {
-		return tamanho;
+	public Unidade getUnidade() {
+		return Unidade.parse(unidade);
 	}
 
-	public void setTamanho(Short tamanho) {
-		this.tamanho = tamanho;
+	public void setUnidade(Unidade unidade) {
+		this.unidade = unidade != null ? unidade.getCodigoUnidade() : null;
 	}
 
-	public Short getTemperamento() {
-		return temperamento;
+	public Tamanho getTamanho() {
+		return Tamanho.parse(tamanho);
 	}
 
-	public void setTemperamento(Short temperamento) {
-		this.temperamento = temperamento;
+	public void setTamanho(Tamanho tamanho) {
+		this.tamanho = tamanho != null ? tamanho.getCodigoTamanho() : null;
+	}
+
+	public Temperamento getTemperamento() {
+		return Temperamento.parse(temperamento);
+	}
+
+	public void setTemperamento(Temperamento temperamento) {
+		this.temperamento = temperamento != null ? temperamento.getCodigoTemperamento() : null;
 	}
 
 	public String getDoencasLimitacoes() {
