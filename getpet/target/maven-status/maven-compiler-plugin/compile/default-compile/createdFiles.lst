@@ -1,5 +1,7 @@
 com\es\getpet\core\bd\AnimalDAO.class
 com\es\getpet\core\val\AdotanteVal.class
+com\es\getpet\core\enuns\Tamanho.class
+com\es\getpet\core\enuns\Sexo.class
 com\es\getpet\core\rn\AnimalRN.class
 com\es\getpet\core\util\VAL.class
 com\es\getpet\core\util\Ordem.class
@@ -13,6 +15,7 @@ com\es\getpet\core\bd\CuidadorDAO.class
 com\es\getpet\core\util\TipoJuncao.class
 com\es\getpet\core\ed\Adotante.class
 com\es\getpet\core\enuns\Especie.class
+com\es\getpet\core\enuns\Unidade.class
 com\es\getpet\core\util\DAO.class
 com\es\getpet\core\util\RN.class
 com\es\getpet\core\val\CuidadorVal.class
@@ -22,4 +25,5 @@ com\es\getpet\core\util\TipoOrdem.class
 com\es\getpet\RouterController.class
 com\es\getpet\core\ed\Pessoa.class
 com\es\getpet\core\util\PropriedadesLista.class
+com\es\getpet\core\enuns\Temperamento.class
 com\es\getpet\App.class

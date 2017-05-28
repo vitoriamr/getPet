@@ -9,9 +9,12 @@ C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\rn\Anima
 C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\ed\Cuidador.java
 C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\ed\Pessoa.java
 C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\rn\CuidadorRN.java
+C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\enuns\Tamanho.java
 C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\util\HibernateUtil.java
 C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\util\TipoJuncao.java
+C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\enuns\Sexo.java
 C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\util\RN.java
+C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\enuns\Unidade.java
 C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\util\ED.java
 C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\rn\AdotanteRN.java
 C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\val\AnimalVal.java
@@ -21,5 +24,6 @@ C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\ed\Adota
 C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\util\PropriedadesLista.java
 C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\App.java
 C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\ed\Animal.java
+C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\enuns\Temperamento.java
 C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\bd\AnimalDAO.java
 C:\Users\bruno\workspace\getPet\getpet\src\main\java\com\es\getpet\core\enuns\Especie.java
