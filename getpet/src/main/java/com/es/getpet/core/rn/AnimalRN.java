@@ -11,4 +11,16 @@ public class AnimalRN extends RN<Animal> {
 		super(new AnimalDAO(), new AnimalVal());
 	}
 
+	public void validaSalva(Animal animal) {
+		getAnimalVal().validaSalva(animal);
+	}
+
+	public AnimalVal getAnimalVal() {
+		return (AnimalVal) val;
+	}
+
+	public AnimalDAO getAnimalDAO() {
+		return (AnimalDAO) bd;
+	}
+
 }

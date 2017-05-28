@@ -4,8 +4,8 @@ import java.util.List;
 
 public class RN<E extends ED> {
 
-	private DAO<E> bd;
-	private VAL<E> val;
+	protected DAO<E> bd;
+	protected VAL<E> val;
 
 	public RN(DAO<E> bd, VAL<E> val) {
 		this.bd = bd;

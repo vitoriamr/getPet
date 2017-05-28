@@ -8,14 +8,42 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
+import com.es.getpet.core.ed.Animal;
 import com.es.getpet.core.ed.Cuidador;
 import com.es.getpet.core.util.DAO;
 import com.es.getpet.core.util.PropriedadesLista;
 import com.es.getpet.core.util.TipoJuncao;
 
 public class CuidadorDAO extends DAO<Cuidador> {
+
+	@Override
+	public Cuidador salva(Cuidador cuidador) {
+        Session session = getSession();
+        try {
+            try {
+                session.beginTransaction();
+                for (Animal animal : cuidador.getListaAnimais()) {
+                	session.save(animal);
+                }
+                session.save(cuidador);
+                session.flush();
+                session.clear();
+                session.getTransaction().commit();
+            } catch (HibernateException e) {
+                if (session.getTransaction() != null && session.getTransaction().isActive()) {
+                    session.getTransaction().rollback();
+                }
+                throw new IllegalStateException(e.getMessage());
+            }
+        } finally {
+            session.close();
+        }
+        return cuidador;
+	}
+
 
 	@Override
     public List<Cuidador> lista(Cuidador ed, PropriedadesLista pl) {
