@@ -1,21 +1,35 @@
 package com.es.getpet.core.ed;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToOne;
+import javax.persistence.Index;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "cuidador", catalog = "", schema = "public")
+@Table(name = "cuidador", schema = "public",
+	uniqueConstraints =
+			{
+				@UniqueConstraint(columnNames = "loginName", name="UniqueLoginName"),
+				@UniqueConstraint(columnNames = "cpf", name="UniqueCpf"),
+				@UniqueConstraint(columnNames = "cnpj", name="UniqueCnpj")
+			},
+	indexes =
+			{
+				@Index(name = "idx_loginName_senha",  columnList="loginName, senha", unique = true)
+			}
+)
 public class Cuidador extends Pessoa {
 
 	@Column
     private Long cnpj;
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy="cuidador", optional = true)
-    private Animal animal;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="cuidador")
+    private List<Animal> listaAnimais;
 
 	public Long getCnpj() {
 		return cnpj;
@@ -25,11 +39,12 @@ public class Cuidador extends Pessoa {
 		this.cnpj = cnpj;
 	}
 
-	public Animal getAnimal() {
-		return animal;
+	public List<Animal> getListaAnimais() {
+		return listaAnimais;
 	}
 
-	public void setAnimal(Animal animal) {
-		this.animal = animal;
+	public void setListaAnimais(List<Animal> listaAnimais) {
+		this.listaAnimais = listaAnimais;
 	}
+
 }

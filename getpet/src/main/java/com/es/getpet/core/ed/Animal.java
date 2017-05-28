@@ -2,7 +2,7 @@ package com.es.getpet.core.ed;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.es.getpet.core.enuns.Especie;
@@ -49,7 +49,7 @@ public class Animal extends ED {
     @Column
 	private String obs;
 
-    @OneToOne
+    @ManyToOne
     private Cuidador cuidador;
 
 	public String getNome() {

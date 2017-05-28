@@ -5,8 +5,9 @@ import javax.persistence.MappedSuperclass;
 
 import com.es.getpet.core.util.ED;
 
-@MappedSuperclass 
+@MappedSuperclass
 public class Pessoa extends ED {
+
 	@Column(nullable = false, length = 200)
 	private String nome;
 
@@ -15,13 +16,13 @@ public class Pessoa extends ED {
 
 	@Column(length = 100)
 	private String email;
-	
+
 	@Column
 	private Long cpf;
 
 	@Column(length = 15)
 	private String telefone;
-	
+
 	@Column
 	private String obs;
 

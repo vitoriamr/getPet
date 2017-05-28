@@ -1,5 +1,6 @@
 package com.es.getpet;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -55,7 +56,10 @@ public class App
     	cuidador.setEndereco("Av: Plinio Brasil Milano, 256 Auxiliadora Porto Alegre");
     	cuidador.setLoginName("joaosilva");
     	cuidador.setSenha("joao");
-    	cuidador.setAnimal(animal);
+    	List<Animal> listaAnimais = new ArrayList<>();
+    	listaAnimais.add(animal);
+
+    	cuidador.setListaAnimais(listaAnimais);
 
     	CuidadorRN cuidadorRN = new CuidadorRN();
     	cuidadorRN.salva(cuidador);

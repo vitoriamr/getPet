@@ -14,6 +14,5 @@
 		<mapping class="com.es.getpet.core.ed.Animal" />
 		<mapping class="com.es.getpet.core.ed.Cuidador" />
 		<mapping class="com.es.getpet.core.ed.Adotante" />
-
 	</session-factory>
 </hibernate-configuration>

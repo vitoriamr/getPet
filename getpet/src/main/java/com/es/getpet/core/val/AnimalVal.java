@@ -8,7 +8,7 @@ public class AnimalVal extends VAL<Animal> {
 	@Override
 	public void validaSalva(Animal animal) {
 		super.validaSalva(animal);
-		if (animal.getNome() == null || animal.getNome().isEmpty()) {
+		if (animal.getNome() == null || animal.getNome().trim().isEmpty()) {
 			throw new IllegalArgumentException("O nome do animal não foi especificado.");
 		}
 		if (animal.getEspecie() == null) {
