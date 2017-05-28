@@ -48,7 +48,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.ruicardozo.jinfra.utils.JInfraUtil</mainClass>
+							<mainClass>com.es.getpet.App</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
