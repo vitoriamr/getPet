@@ -1,6 +1,8 @@
 package com.es.getpet;
 
 import java.util.List;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.es.getpet.core.ed.Adotante;
 import com.es.getpet.core.ed.Animal;
@@ -13,9 +15,13 @@ import com.es.getpet.core.rn.AnimalRN;
 import com.es.getpet.core.rn.CuidadorRN;
 import com.es.getpet.core.util.HibernateUtil;
 
-public class App {
+@SpringBootApplication
+public class App
+{
+    public static void main( String[] args )
+    {
+    	SpringApplication.run(App.class, args);
 
-    public static void main( String[] args ) {
     	Animal animal = new Animal();
     	animal.setNome("Hanna");
     	animal.setSexo(Sexo.FEMEA);
