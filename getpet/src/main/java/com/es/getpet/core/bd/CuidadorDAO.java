@@ -82,8 +82,13 @@ public class CuidadorDAO extends DAO<Cuidador> {
 		CriteriaQuery<Cuidador> criteria = builder.createQuery(Cuidador.class);
 		Root<Cuidador> raiz = criteria.from(Cuidador.class);
 		List<Predicate> listaPredicados = new ArrayList<>();
-		if (ed.getNome() != null) {
-			listaPredicados.add(builder.like(raiz.get("nome"), "%" + ed.getNome() + "%"));
+		if (ed.getLoginName() != null) {
+			listaPredicados.add(builder.equal(raiz.get("loginName"), ed.getLoginName()));
+			listaPredicados.add(builder.equal(raiz.get("senha"), ed.getSenha()));
+		} else {
+			if (ed.getNome() != null) {
+				listaPredicados.add(builder.like(raiz.get("nome"), "%" + ed.getNome() + "%"));
+			}
 		}
 		Predicate[] arrayPredicados = new Predicate[listaPredicados.size()];
 		arrayPredicados = listaPredicados.toArray(arrayPredicados);

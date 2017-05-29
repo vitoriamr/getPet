@@ -5,7 +5,7 @@
 -- Dumped from database version 9.6.2
 -- Dumped by pg_dump version 9.6.2
 
--- Started on 2017-05-21 13:29:15 -03
+-- Started on 2017-05-28 21:08:06 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -25,7 +25,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2196 (class 0 OID 0)
+-- TOC entry 2205 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -40,7 +40,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 186 (class 1259 OID 16621)
+-- TOC entry 186 (class 1259 OID 18231)
 -- Name: adotante; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -49,20 +49,20 @@ CREATE TABLE adotante (
     cpf bigint,
     email character varying(100),
     endereco character varying(200) NOT NULL,
-    ja_adotou boolean NOT NULL,
     loginname character varying(100) NOT NULL,
     nome character varying(200) NOT NULL,
     obs character varying(255),
-    qte_animais integer NOT NULL,
     senha character varying(15) NOT NULL,
-    telefone character varying(15)
+    telefone character varying(15),
+    ja_adotou boolean NOT NULL,
+    qte_animais integer NOT NULL
 );
 
 
 ALTER TABLE adotante OWNER TO postgres;
 
 --
--- TOC entry 185 (class 1259 OID 16619)
+-- TOC entry 185 (class 1259 OID 18229)
 -- Name: adotante_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -77,7 +77,7 @@ CREATE SEQUENCE adotante_id_seq
 ALTER TABLE adotante_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2197 (class 0 OID 0)
+-- TOC entry 2206 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: adotante_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -86,7 +86,7 @@ ALTER SEQUENCE adotante_id_seq OWNED BY adotante.id;
 
 
 --
--- TOC entry 188 (class 1259 OID 16632)
+-- TOC entry 188 (class 1259 OID 18242)
 -- Name: animal; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -101,14 +101,16 @@ CREATE TABLE animal (
     raca character varying(255),
     sexo smallint,
     tamanho smallint NOT NULL,
-    temperamento smallint
+    temperamento smallint,
+    unidade smallint,
+    cuidador_id bigint
 );
 
 
 ALTER TABLE animal OWNER TO postgres;
 
 --
--- TOC entry 187 (class 1259 OID 16630)
+-- TOC entry 187 (class 1259 OID 18240)
 -- Name: animal_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -123,7 +125,7 @@ CREATE SEQUENCE animal_id_seq
 ALTER TABLE animal_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2198 (class 0 OID 0)
+-- TOC entry 2207 (class 0 OID 0)
 -- Dependencies: 187
 -- Name: animal_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -132,28 +134,28 @@ ALTER SEQUENCE animal_id_seq OWNED BY animal.id;
 
 
 --
--- TOC entry 190 (class 1259 OID 16643)
+-- TOC entry 190 (class 1259 OID 18253)
 -- Name: cuidador; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE cuidador (
     id bigint NOT NULL,
-    cnpj bigint,
     cpf bigint,
     email character varying(100),
     endereco character varying(200) NOT NULL,
     loginname character varying(100) NOT NULL,
     nome character varying(200) NOT NULL,
     obs character varying(255),
-    senha character varying(100) NOT NULL,
-    telefone character varying(15)
+    senha character varying(15) NOT NULL,
+    telefone character varying(15),
+    cnpj bigint
 );
 
 
 ALTER TABLE cuidador OWNER TO postgres;
 
 --
--- TOC entry 189 (class 1259 OID 16641)
+-- TOC entry 189 (class 1259 OID 18251)
 -- Name: cuidador_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -168,7 +170,7 @@ CREATE SEQUENCE cuidador_id_seq
 ALTER TABLE cuidador_id_seq OWNER TO postgres;
 
 --
--- TOC entry 2199 (class 0 OID 0)
+-- TOC entry 2208 (class 0 OID 0)
 -- Dependencies: 189
 -- Name: cuidador_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -177,7 +179,7 @@ ALTER SEQUENCE cuidador_id_seq OWNED BY cuidador.id;
 
 
 --
--- TOC entry 2058 (class 2604 OID 16624)
+-- TOC entry 2058 (class 2604 OID 18234)
 -- Name: adotante id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -185,7 +187,7 @@ ALTER TABLE ONLY adotante ALTER COLUMN id SET DEFAULT nextval('adotante_id_seq':
 
 
 --
--- TOC entry 2059 (class 2604 OID 16635)
+-- TOC entry 2059 (class 2604 OID 18245)
 -- Name: animal id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -193,7 +195,7 @@ ALTER TABLE ONLY animal ALTER COLUMN id SET DEFAULT nextval('animal_id_seq'::reg
 
 
 --
--- TOC entry 2060 (class 2604 OID 16646)
+-- TOC entry 2060 (class 2604 OID 18256)
 -- Name: cuidador id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -201,58 +203,58 @@ ALTER TABLE ONLY cuidador ALTER COLUMN id SET DEFAULT nextval('cuidador_id_seq':
 
 
 --
--- TOC entry 2185 (class 0 OID 16621)
+-- TOC entry 2194 (class 0 OID 18231)
 -- Dependencies: 186
 -- Data for Name: adotante; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY adotante (id, cpf, email, endereco, ja_adotou, loginname, nome, obs, qte_animais, senha, telefone) FROM stdin;
-1	\N	\N	Rua Mario Totta, 588	t	camiladorneles	Camila Dorneles	\N	0	camila	\N
+COPY adotante (id, cpf, email, endereco, loginname, nome, obs, senha, telefone, ja_adotou, qte_animais) FROM stdin;
 \.
 
 
 --
--- TOC entry 2200 (class 0 OID 0)
+-- TOC entry 2209 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: adotante_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('adotante_id_seq', 1, true);
+SELECT pg_catalog.setval('adotante_id_seq', 1, false);
 
 
 --
--- TOC entry 2187 (class 0 OID 16632)
+-- TOC entry 2196 (class 0 OID 18242)
 -- Dependencies: 188
 -- Data for Name: animal; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY animal (id, castrado, doencaslimitacoes, especie, idade, nome, obs, raca, sexo, tamanho, temperamento) FROM stdin;
-1	f	\N	0	6	Hanna	\N	Pitbul	0	2	\N
+COPY animal (id, castrado, doencaslimitacoes, especie, idade, nome, obs, raca, sexo, tamanho, temperamento, unidade, cuidador_id) FROM stdin;
+1	f		1	2	Hanna		PUG	1	0	\N	2	\N
+2	f		1	14	Belinha		Poodle	1	0	\N	3	\N
 \.
 
 
 --
--- TOC entry 2201 (class 0 OID 0)
+-- TOC entry 2210 (class 0 OID 0)
 -- Dependencies: 187
 -- Name: animal_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('animal_id_seq', 1, true);
+SELECT pg_catalog.setval('animal_id_seq', 2, true);
 
 
 --
--- TOC entry 2189 (class 0 OID 16643)
+-- TOC entry 2198 (class 0 OID 18253)
 -- Dependencies: 190
 -- Data for Name: cuidador; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY cuidador (id, cnpj, cpf, email, endereco, loginname, nome, obs, senha, telefone) FROM stdin;
-1	\N	\N	\N	Av: Plinio Brasil Milano, 256 Auxiliadora Porto Alegre	joaosilva	João da Silva	\N	joao	\N
+COPY cuidador (id, cpf, email, endereco, loginname, nome, obs, senha, telefone, cnpj) FROM stdin;
+1	91395380015	ruicardozo@gmail.com	Av Brasil, 554	ruicardozo	Rui Felipe		felipe	234234	\N
 \.
 
 
 --
--- TOC entry 2202 (class 0 OID 0)
+-- TOC entry 2211 (class 0 OID 0)
 -- Dependencies: 189
 -- Name: cuidador_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -261,7 +263,7 @@ SELECT pg_catalog.setval('cuidador_id_seq', 1, true);
 
 
 --
--- TOC entry 2062 (class 2606 OID 16629)
+-- TOC entry 2062 (class 2606 OID 18239)
 -- Name: adotante adotante_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -270,7 +272,7 @@ ALTER TABLE ONLY adotante
 
 
 --
--- TOC entry 2064 (class 2606 OID 16640)
+-- TOC entry 2064 (class 2606 OID 18250)
 -- Name: animal animal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -279,7 +281,7 @@ ALTER TABLE ONLY animal
 
 
 --
--- TOC entry 2066 (class 2606 OID 16651)
+-- TOC entry 2066 (class 2606 OID 18261)
 -- Name: cuidador cuidador_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -287,7 +289,52 @@ ALTER TABLE ONLY cuidador
     ADD CONSTRAINT cuidador_pkey PRIMARY KEY (id);
 
 
--- Completed on 2017-05-21 13:29:16 -03
+--
+-- TOC entry 2068 (class 2606 OID 18269)
+-- Name: cuidador idx_loginname_senha; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cuidador
+    ADD CONSTRAINT idx_loginname_senha UNIQUE (loginname, senha);
+
+
+--
+-- TOC entry 2070 (class 2606 OID 18267)
+-- Name: cuidador uniquecnpj; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cuidador
+    ADD CONSTRAINT uniquecnpj UNIQUE (cnpj);
+
+
+--
+-- TOC entry 2072 (class 2606 OID 18265)
+-- Name: cuidador uniquecpf; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cuidador
+    ADD CONSTRAINT uniquecpf UNIQUE (cpf);
+
+
+--
+-- TOC entry 2074 (class 2606 OID 18263)
+-- Name: cuidador uniqueloginname; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cuidador
+    ADD CONSTRAINT uniqueloginname UNIQUE (loginname);
+
+
+--
+-- TOC entry 2075 (class 2606 OID 18270)
+-- Name: animal fk2wcsj93aqt5l2jcgkieiqhi86; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY animal
+    ADD CONSTRAINT fk2wcsj93aqt5l2jcgkieiqhi86 FOREIGN KEY (cuidador_id) REFERENCES cuidador(id);
+
+
+-- Completed on 2017-05-28 21:08:06 -03
 
 --
 -- PostgreSQL database dump complete
