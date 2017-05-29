@@ -1,0 +1,23 @@
+.animal {
+	border-style: solid;
+	border-width: 1px;
+	box-sizing: border-box;
+	height: auto;
+	margin-left: 1%;
+	margin-right: 1%;
+	width: 18%;
+}
+
+.animal__fields {
+	box-sizing: border-box;
+	display: inline-block;
+	padding: 5px;
+	width: 50%;
+}
+
+.animal__values {
+	box-sizing: border-box;
+	display: inline-block;
+	padding: 5px;
+	width: 50%;
+}

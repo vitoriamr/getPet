@@ -120,7 +120,7 @@ public class App
     		System.out.println(a.getNome());
     	}
 
-    	HibernateUtil.fechaSessao();
+//    	HibernateUtil.fechaSessao();
 
 
     }
