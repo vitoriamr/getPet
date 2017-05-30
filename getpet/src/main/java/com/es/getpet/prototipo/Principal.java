@@ -50,6 +50,7 @@ public final class Principal extends javax.swing.JFrame {
             titulo = "GetPet - Protótipo v 1.0.0";
         }
         setTitle(titulo);
+        atualizaTabela();
     }
 
     private void initComponents() {

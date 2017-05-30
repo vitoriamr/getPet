@@ -5,6 +5,8 @@ import com.es.getpet.core.ed.Cuidador;
 import com.es.getpet.core.rn.AdotanteRN;
 import com.es.getpet.core.rn.AnimalRN;
 import com.es.getpet.core.rn.CuidadorRN;
+import com.es.getpet.core.util.HibernateUtil;
+
 import java.awt.Frame;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -68,7 +70,7 @@ public final class LogarDialog extends javax.swing.JDialog {
 
         jLabel2.setText("Senha:");
 
-        buttonOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pata2.gif"))); // NOI18N
+        buttonOk.setIcon(new javax.swing.ImageIcon(HibernateUtil.class.getResource("/res/pata2.gif"))); // NOI18N
         buttonOk.setText("OK");
         buttonOk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonOk.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +87,7 @@ public final class LogarDialog extends javax.swing.JDialog {
             }
         });
 
-        buttonCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cadastrar.gif"))); // NOI18N
+        buttonCadastrar.setIcon(new javax.swing.ImageIcon(HibernateUtil.class.getResource("/res/cadastrar.gif"))); // NOI18N
         buttonCadastrar.setText("Cadastrar-se");
         buttonCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonCadastrar.addActionListener(new java.awt.event.ActionListener() {
