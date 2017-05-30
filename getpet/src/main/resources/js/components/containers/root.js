@@ -1,8 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom')
 import { Animal } from '../../models/animal'
-import Menu from './menu'
-import AnimalsList from './animalsList'
+import RootView from '../presentationals/rootView'
 
 export default class Root extends React.Component {
 	constructor(props) {
@@ -26,16 +25,9 @@ export default class Root extends React.Component {
 	
 	render() {
 		return (
-			<div>
-				<header>
-					<Menu />
-				</header>
-				<div>
-					<AnimalsList
-						animais={ this.state.animais }
-					/>
-				</div>
-			</div>
+			<RootView
+				animais={ this.state.animais }
+			/>
 		)
 	}
 }

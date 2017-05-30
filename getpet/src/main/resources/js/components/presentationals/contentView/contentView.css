@@ -1,0 +1,17 @@
+.content {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	padding-top: 5%;
+	width: 70%;
+}
+
+.content__title {
+	background-color: #22333b;
+	color: #eae0d5;
+	display: inline-block;
+	margin-left: 1%;
+	padding-left: 1%;
+	padding-right: 1%;
+}

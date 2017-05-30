@@ -1,3 +1,22 @@
 .lista-animais {
 	display: flex;
+	flex-grow: 1;
+}
+
+.button--back {
+	background-color: #22333b;
+	color: #eae0d5;
+	margin-bottom: 1%;
+	margin-left: 1%;
+	margin-right: 1%;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	text-align: center;
+	width: 20%;
+}
+
+.button--back:hover {
+	background-color: #eae0d5;
+	color: #0a0908;
+	cursor: pointer;
 }

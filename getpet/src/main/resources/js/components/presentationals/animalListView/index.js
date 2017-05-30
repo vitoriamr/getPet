@@ -8,12 +8,20 @@ export default class AnimalListView extends React.Component {
 		super(props)
 	}
 	
+	handleClick(id) {
+		return () => {
+			this.props.handleAnimalOnClick(id)
+		}
+	}
+	
 	render() {
 		let lista = this.props.animais.map(animal => {
 			return (
 				<AnimalView
 					animal={ animal }
+					handleClick={ this.handleClick(animal.id) }
 					key={ `animal.${animal.id}` }
+					resumed
 				/>
 			)
 		})

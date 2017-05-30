@@ -13,13 +13,15 @@ export function Animal({ castrado, cuidador, doencasLimitacoes, especie, id, ida
 	this.castrado = castrado
 	this.cuidador = cuidador
 	this.doencasLimitacoes = doencasLimitacoes
-	this.especie = getEspecie(especie)
+	this._especie = especie
+	this.especie = getEspecie(this._especie)
 	this.id = id
 	this.idade = idade
 	this.nome = nome
 	this.obs = obs
 	this.raca = raca
-	this.sexo = getSexo(sexo)
+	this._sexo = sexo
+	this.sexo = getSexo(this._sexo)
 	this.tamanho = tamanho
 	this.temperamento = temperamento
 	this.unidade = unidade
