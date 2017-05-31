@@ -1,4 +1,26 @@
 package com.es.getpet.prototipo;
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
 
 import com.es.getpet.core.ed.Animal;
 import com.es.getpet.core.enuns.Especie;
@@ -7,14 +29,10 @@ import com.es.getpet.core.enuns.Tamanho;
 import com.es.getpet.core.enuns.Temperamento;
 import com.es.getpet.core.enuns.Unidade;
 import com.es.getpet.core.rn.AnimalRN;
-import java.awt.Frame;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 
 public final class AnimalDialog extends JDialog {
 
-	private static final long serialVersionUID = -2823304649043165185L;
+	private static final long serialVersionUID = 6031745301513008526L;
 	private Animal animal;
     private AnimalRN animalRN;
     private final Frame parent;
@@ -78,6 +96,19 @@ public final class AnimalDialog extends JDialog {
         animal.setCastrado(checkBoxCastrado.isSelected());
         animal.setDoencasLimitacoes(textFieldDoencasLimitacoes.getText());
         animal.setObs(textAreaObservacoes.getText());
+        animal.setFoto(getByteArrayImagem());
+    }
+
+    private byte[] getByteArrayImagem() {
+        Icon icon = labelFoto.getIcon();
+        BufferedImage image = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_RGB);
+        ByteArrayOutputStream b = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(image, "jpg", b);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return b.toByteArray();
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -100,6 +131,16 @@ public final class AnimalDialog extends JDialog {
 
     public boolean isOk() {
         return ok;
+    }
+
+    private BufferedImage getImage(String filename) {
+        try {
+            InputStream in = new FileInputStream(filename);
+            return ImageIO.read(in);
+        } catch (IOException e) {
+            System.out.println("A imagem não foi carregada.");
+        }
+        return null;
     }
 
     private void initComponents() {
@@ -128,8 +169,11 @@ public final class AnimalDialog extends JDialog {
         labelUnidade = new javax.swing.JLabel();
         labelTemperamento = new javax.swing.JLabel();
         comboBoxTemperamento = new javax.swing.JComboBox<>();
+        labelFoto = new javax.swing.JLabel();
+        buttonFoto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("GetPet - Cadastro de Animais");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -178,6 +222,13 @@ public final class AnimalDialog extends JDialog {
 
         labelTemperamento.setText("Temperamento:");
 
+        buttonFoto.setText("Foto");
+        buttonFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonFotoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,51 +237,53 @@ public final class AnimalDialog extends JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollPaneTextAreaObservacoes, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(textFieldNome)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(textFieldRaca, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(spinnerIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(labelIdade))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(labelUnidade)
-                                        .addComponent(comboBoxUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(labelNome)
-                            .addComponent(labelRaca))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelTamanho)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(comboBoxTamanho, javax.swing.GroupLayout.Alignment.LEADING, 0, 129, Short.MAX_VALUE)
-                                    .addComponent(comboBoxEspecie, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(labelEspecie, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(comboBoxSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelSexo)
-                                            .addComponent(checkBoxCastrado))
-                                        .addGap(0, 44, Short.MAX_VALUE))))))
+                    .addComponent(textFieldDoencasLimitacoes)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 600, Short.MAX_VALUE)
                         .addComponent(buttonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonCancelar))
-                    .addComponent(textFieldDoencasLimitacoes)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelObs)
-                            .addComponent(labelTemperamento)
-                            .addComponent(labelDoencasLimitacoes)
-                            .addComponent(comboBoxTemperamento, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelTemperamento)
+                                    .addComponent(comboBoxTemperamento, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelDoencasLimitacoes)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(textFieldNome, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(textFieldRaca, javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(spinnerIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(labelIdade))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(labelUnidade)
+                                                            .addComponent(comboBoxUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(labelNome)
+                                                .addComponent(labelRaca))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(labelTamanho)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(buttonFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                            .addComponent(comboBoxTamanho, javax.swing.GroupLayout.Alignment.LEADING, 0, 129, Short.MAX_VALUE)
+                                                            .addComponent(comboBoxEspecie, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addComponent(labelEspecie, javax.swing.GroupLayout.Alignment.LEADING))
+                                                        .addGap(18, 18, 18)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                            .addComponent(labelSexo)
+                                                            .addComponent(checkBoxCastrado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addComponent(comboBoxSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelObs))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -240,39 +293,44 @@ public final class AnimalDialog extends JDialog {
                 .addGap(19, 19, 19)
                 .addComponent(labelNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelIdade)
-                    .addComponent(labelEspecie)
-                    .addComponent(labelSexo)
-                    .addComponent(labelUnidade))
-                .addGap(3, 3, 3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(spinnerIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelRaca)
-                    .addComponent(labelTamanho))
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkBoxCastrado))
-                .addGap(18, 18, 18)
-                .addComponent(labelTemperamento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboBoxTemperamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(labelDoencasLimitacoes)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelIdade)
+                            .addComponent(labelEspecie)
+                            .addComponent(labelSexo)
+                            .addComponent(labelUnidade))
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(spinnerIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboBoxUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboBoxEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelRaca)
+                            .addComponent(labelTamanho))
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textFieldRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboBoxTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkBoxCastrado))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addComponent(labelTemperamento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboBoxTemperamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonFoto))
+                        .addGap(18, 18, 18)
+                        .addComponent(labelDoencasLimitacoes))
+                    .addComponent(labelFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textFieldDoencasLimitacoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(labelObs)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollPaneTextAreaObservacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -282,9 +340,9 @@ public final class AnimalDialog extends JDialog {
         );
 
         pack();
-    }
+    }// </editor-fold>
 
-    private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
+    private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {
         try {
         if (animal == null) {
             animal = new Animal();
@@ -301,17 +359,132 @@ public final class AnimalDialog extends JDialog {
 
     }
 
-    private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
+    private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {
         dispose();
     }
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {
         if (!ok) {
             animal = null;
         }
     }
 
+    private void buttonFotoActionPerformed(java.awt.event.ActionEvent evt) {
+        JFileChooser fc = new JFileChooser();
+        fc.addChoosableFileFilter(new ImageFilter());
+        fc.setAcceptAllFileFilterUsed(false);
+        fc.setAccessory(new PreviewImagem(fc));
+        if (fc.showDialog(parent, "Abrir") == JFileChooser.APPROVE_OPTION) {
+            BufferedImage bi = getImage(fc.getSelectedFile().toString());
+            labelFoto.setIcon(new ImageIcon(bi.getScaledInstance(labelFoto.getWidth(), labelFoto.getHeight(), Image.SCALE_SMOOTH)));
+        }
+    }
+
+    private static String getExtension(File arquivo) {
+        String extensao = null;
+        String s = arquivo.getName();
+        int i = s.lastIndexOf('.');
+        if (i > 0 && i < s.length() - 1) {
+            extensao = s.substring(i + 1).toLowerCase();
+        }
+        return extensao;
+    }
+
+    private class ImageFilter extends FileFilter {
+
+        @Override
+        public boolean accept(File f) {
+            boolean result = f.isDirectory();
+            if (!result) {
+                String extension = getExtension(f);
+                if (extension != null) {
+                    result = extension.equalsIgnoreCase("tiff")
+                            || extension.equalsIgnoreCase("tif")
+                            || extension.equalsIgnoreCase("gif")
+                            || extension.equalsIgnoreCase("jpg")
+                            || extension.equalsIgnoreCase("jpeg")
+                            || extension.equalsIgnoreCase("png");
+                }
+            }
+            return result;
+        }
+
+        @Override
+        public String getDescription() {
+            return "Apenas imagens";
+        }
+
+    }
+
+    private final class PreviewImagem extends JComponent implements PropertyChangeListener {
+
+        private ImageIcon miniatura;
+        private File arquivo;
+
+        public PreviewImagem(JFileChooser fc) {
+            setPreferredSize(new Dimension(100, 50));
+            fc.addPropertyChangeListener(getListener());
+        }
+
+        public final PreviewImagem getListener() {
+            return this;
+        }
+
+        public void carregaImagem() {
+            if (arquivo == null) {
+                miniatura = null;
+                return;
+            }
+            ImageIcon icone = new ImageIcon(arquivo.getPath());
+            if (icone.getIconWidth() > 90) {
+                miniatura = new ImageIcon(icone.getImage().getScaledInstance(90, -1, Image.SCALE_DEFAULT));
+            } else {
+                miniatura = icone;
+            }
+        }
+
+        @Override
+        public void propertyChange(PropertyChangeEvent e) {
+            boolean mudou = false;
+            String propriedade = e.getPropertyName();
+            if (JFileChooser.DIRECTORY_CHANGED_PROPERTY.equals(propriedade)) {
+                arquivo = null;
+                mudou = true;
+            } else if (JFileChooser.SELECTED_FILE_CHANGED_PROPERTY.equals(propriedade)) {
+                arquivo = (File) e.getNewValue();
+                mudou = true;
+            }
+            if (mudou) {
+                miniatura = null;
+                if (isShowing()) {
+                    carregaImagem();
+                    repaint();
+                }
+            }
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            if (miniatura == null) {
+                carregaImagem();
+            }
+            if (miniatura != null) {
+                int x = getWidth() / 2 - miniatura.getIconWidth() / 2;
+                int y = getHeight() / 2 - miniatura.getIconHeight() / 2;
+                if (y < 0) {
+                    y = 0;
+                }
+                if (x < 5) {
+                    x = 5;
+                }
+                miniatura.paintIcon(this, g, x, y);
+            }
+        }
+    }
+
+    // Variables declaration - do not modify
     private javax.swing.JButton buttonCancelar;
+    private javax.swing.JButton buttonFoto;
     private javax.swing.JButton buttonSalvar;
     private javax.swing.JCheckBox checkBoxCastrado;
     private javax.swing.JComboBox<String> comboBoxEspecie;
@@ -321,6 +494,7 @@ public final class AnimalDialog extends JDialog {
     private javax.swing.JComboBox<String> comboBoxUnidade;
     private javax.swing.JLabel labelDoencasLimitacoes;
     private javax.swing.JLabel labelEspecie;
+    private javax.swing.JLabel labelFoto;
     private javax.swing.JLabel labelIdade;
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelObs;
@@ -335,5 +509,5 @@ public final class AnimalDialog extends JDialog {
     private javax.swing.JTextField textFieldDoencasLimitacoes;
     private javax.swing.JTextField textFieldNome;
     private javax.swing.JTextField textFieldRaca;
-
+    // End of variables declaration
 }

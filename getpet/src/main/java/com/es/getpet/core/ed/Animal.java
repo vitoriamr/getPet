@@ -2,6 +2,7 @@ package com.es.getpet.core.ed;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -48,6 +49,10 @@ public class Animal extends ED {
 
     @Column
 	private String obs;
+
+    @Column
+    @Lob
+    private byte[] foto;
 
     @ManyToOne
     private Cuidador cuidador;
@@ -146,6 +151,14 @@ public class Animal extends ED {
 
 	public void setCuidador(Cuidador cuidador) {
 		this.cuidador = cuidador;
+	}
+
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
 	}
 
 }
