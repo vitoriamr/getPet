@@ -5,7 +5,7 @@ import java.util.List;
 
 public class AnimaisModeloTabela extends ModeloTabela<Animal> {
 
-	private static final long serialVersionUID = -598813524285385922L;
+	private static final long serialVersionUID = -1519451910458213753L;
 	public static final int COL_NOME = 0;
     public static final int COL_ESPECIE = 1;
     public static final int COL_SEXO = 2;

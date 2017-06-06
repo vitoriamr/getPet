@@ -5,13 +5,12 @@ import com.es.getpet.core.ed.Cuidador;
 import com.es.getpet.core.rn.AdotanteRN;
 import com.es.getpet.core.rn.AnimalRN;
 import com.es.getpet.core.rn.CuidadorRN;
-import com.es.getpet.core.util.HibernateUtil;
-
 import java.awt.Frame;
 import java.util.List;
 import javax.swing.JOptionPane;
 
 public final class LogarDialog extends javax.swing.JDialog {
+
 
 	private static final long serialVersionUID = -5537378468924874482L;
 	private final Frame parent;
@@ -70,7 +69,7 @@ public final class LogarDialog extends javax.swing.JDialog {
 
         jLabel2.setText("Senha:");
 
-        buttonOk.setIcon(new javax.swing.ImageIcon(HibernateUtil.class.getResource("/res/pata2.gif"))); // NOI18N
+        buttonOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pata2.gif"))); // NOI18N
         buttonOk.setText("OK");
         buttonOk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonOk.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +86,7 @@ public final class LogarDialog extends javax.swing.JDialog {
             }
         });
 
-        buttonCadastrar.setIcon(new javax.swing.ImageIcon(HibernateUtil.class.getResource("/res/cadastrar.gif"))); // NOI18N
+        buttonCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cadastrar.gif"))); // NOI18N
         buttonCadastrar.setText("Cadastrar-se");
         buttonCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -145,7 +144,7 @@ public final class LogarDialog extends javax.swing.JDialog {
         pack();
     }
 
-    private void buttonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOkActionPerformed
+    private void buttonOkActionPerformed(java.awt.event.ActionEvent evt) {
         Cuidador c = new Cuidador();
         c.setLoginName(textFieldLoginName.getText());
         c.setSenha(new String(passwordFieldSenha.getPassword()));
@@ -166,7 +165,7 @@ public final class LogarDialog extends javax.swing.JDialog {
         dispose();
     }
 
-    private void buttonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarActionPerformed
+    private void buttonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {
         CadastroDialog dlg = new CadastroDialog(parent, adotanteRN, cuidadorRN, animalRN);
         dlg.setVisible(true);
         if (dlg.isOk()) {
@@ -177,7 +176,7 @@ public final class LogarDialog extends javax.swing.JDialog {
         }
     }
 
-    private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
+    private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {
         dispose();
     }
 
@@ -188,5 +187,4 @@ public final class LogarDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField passwordFieldSenha;
     private javax.swing.JTextField textFieldLoginName;
-
 }

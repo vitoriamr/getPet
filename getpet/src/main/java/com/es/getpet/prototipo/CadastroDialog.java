@@ -90,7 +90,7 @@ public final class CadastroDialog extends javax.swing.JDialog {
     }
 
     private void atualizaTabelaListaAnimais() {
-        ModeloTabela<?> modelo = new AnimaisModeloTabela(listaAnimais);
+        ModeloTabela<Animal> modelo = new AnimaisModeloTabela(listaAnimais);
         tableListaAnimais.setModel(modelo);
     }
 
@@ -180,50 +180,51 @@ public final class CadastroDialog extends javax.swing.JDialog {
             .addGroup(panelPessoaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textFieldNome)
-                    .addComponent(textFieldEndereco)
                     .addGroup(panelPessoaLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
-                        .addGap(185, 185, 185))
-                    .addGroup(panelPessoaLayout.createSequentialGroup()
-                        .addComponent(textFieldEmail)
-                        .addGap(18, 18, 18)
-                        .addComponent(formattedTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelPessoaLayout.createSequentialGroup()
-                        .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(formattedTextFieldCnpj, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(textFieldTelefone, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(labelCnpj))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelPessoaLayout.createSequentialGroup()
-                                .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelPessoaLayout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addGap(0, 75, Short.MAX_VALUE))
-                                    .addComponent(textFieldLoginName))
-                                .addGap(18, 18, 18)
-                                .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(passwordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPessoaLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(checkBoxJaAdotou)
-                                .addGap(18, 18, 18)
-                                .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(labelQteAnimais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(spinnerQteAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(jScrollPane1)
+                        .addGap(197, 197, 197))
                     .addGroup(panelPessoaLayout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addGap(396, 396, 396)))
-                .addContainerGap())
+                        .addGap(493, 493, 493))
+                    .addGroup(panelPessoaLayout.createSequentialGroup()
+                        .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textFieldNome)
+                            .addComponent(textFieldEndereco)
+                            .addGroup(panelPessoaLayout.createSequentialGroup()
+                                .addComponent(textFieldEmail)
+                                .addGap(18, 18, 18)
+                                .addComponent(formattedTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelPessoaLayout.createSequentialGroup()
+                                .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel5)
+                                    .addComponent(labelCnpj)
+                                    .addComponent(formattedTextFieldCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelPessoaLayout.createSequentialGroup()
+                                        .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(panelPessoaLayout.createSequentialGroup()
+                                                .addComponent(jLabel10)
+                                                .addGap(0, 49, Short.MAX_VALUE))
+                                            .addComponent(textFieldLoginName))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel11)
+                                            .addComponent(passwordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPessoaLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(checkBoxJaAdotou)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(labelQteAnimais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(spinnerQteAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jScrollPane1))
+                        .addContainerGap())))
         );
         panelPessoaLayout.setVerticalGroup(
             panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,22 +246,21 @@ public final class CadastroDialog extends javax.swing.JDialog {
                     .addComponent(formattedTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(panelPessoaLayout.createSequentialGroup()
+                    .addGroup(panelPessoaLayout.createSequentialGroup()
+                        .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(textFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelPessoaLayout.createSequentialGroup()
-                            .addComponent(jLabel10)
-                            .addGap(3, 3, 3)
-                            .addComponent(textFieldLoginName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panelPessoaLayout.createSequentialGroup()
                             .addComponent(jLabel11)
                             .addGap(30, 30, 30))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPessoaLayout.createSequentialGroup()
                             .addGap(20, 20, 20)
-                            .addComponent(passwordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(passwordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(textFieldLoginName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
                 .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPessoaLayout.createSequentialGroup()
@@ -302,7 +302,7 @@ public final class CadastroDialog extends javax.swing.JDialog {
             .addGroup(panelAnimaisLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelAnimaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
                     .addGroup(panelAnimaisLayout.createSequentialGroup()
                         .addComponent(buttonCadastrarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -392,7 +392,7 @@ public final class CadastroDialog extends javax.swing.JDialog {
         pack();
     }
 
-    private void buttonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOkActionPerformed
+    private void buttonOkActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             if (radioButtonCuidador.isSelected()) {
                 cuidador = new Cuidador();
@@ -410,15 +410,15 @@ public final class CadastroDialog extends javax.swing.JDialog {
         }
     }
 
-    private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
+    private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {
         dispose();
     }
 
-    private void radioButtonCuidadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioButtonCuidadorActionPerformed
+    private void radioButtonCuidadorActionPerformed(java.awt.event.ActionEvent evt) {
         atualizaFormulario(radioButtonCuidador.isSelected());
     }
 
-    private void buttonCadastrarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarAnimalActionPerformed
+    private void buttonCadastrarAnimalActionPerformed(java.awt.event.ActionEvent evt) {
         AnimalDialog dlg = new AnimalDialog(parent, animalRN);
         dlg.setVisible(true);
         if (dlg.getAnimal() != null) {
