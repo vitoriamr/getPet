@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 public final class CadastroDialog extends javax.swing.JDialog {
 
-	private static final long serialVersionUID = 1955578550558926633L;
+	private static final long serialVersionUID = 1L;
 	private CuidadorRN cuidadorRN;
     private AdotanteRN adotanteRN;
     private AnimalRN animalRN;
@@ -110,32 +110,32 @@ public final class CadastroDialog extends javax.swing.JDialog {
 
         tabbedPane = new javax.swing.JTabbedPane();
         panelPessoa = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        labelObs = new javax.swing.JLabel();
         labelCnpj = new javax.swing.JLabel();
         formattedTextFieldCnpj = new javax.swing.JFormattedTextField();
         checkBoxJaAdotou = new javax.swing.JCheckBox();
         labelQteAnimais = new javax.swing.JLabel();
         spinnerQteAnimais = new javax.swing.JSpinner();
-        jLabel1 = new javax.swing.JLabel();
+        labelNome = new javax.swing.JLabel();
         textFieldNome = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        labelNomeUsuario = new javax.swing.JLabel();
         textFieldEndereco = new javax.swing.JTextField();
         textFieldLoginName = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        labelEndereco = new javax.swing.JLabel();
+        labelSenha = new javax.swing.JLabel();
+        labelEmail = new javax.swing.JLabel();
         passwordFieldSenha = new javax.swing.JPasswordField();
-        jLabel4 = new javax.swing.JLabel();
+        labelCPF = new javax.swing.JLabel();
         textFieldEmail = new javax.swing.JTextField();
         formattedTextFieldCpf = new javax.swing.JFormattedTextField();
-        jLabel5 = new javax.swing.JLabel();
+        labelTelefone = new javax.swing.JLabel();
         textFieldTelefone = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollPanePessoa = new javax.swing.JScrollPane();
         textAreaObs = new javax.swing.JTextArea();
         panelAnimais = new javax.swing.JPanel();
         buttonCadastrarAnimal = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        buttonRemoverAnimal = new javax.swing.JButton();
+        scrollPaneAnimais = new javax.swing.JScrollPane();
         tableListaAnimais = new javax.swing.JTable();
         buttonCancelar = new javax.swing.JButton();
         buttonOk = new javax.swing.JButton();
@@ -145,7 +145,7 @@ public final class CadastroDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        jLabel7.setText("Obs:");
+        labelObs.setText("Obs:");
 
         labelCnpj.setText("CNPJ:");
 
@@ -155,23 +155,23 @@ public final class CadastroDialog extends javax.swing.JDialog {
 
         spinnerQteAnimais.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
-        jLabel1.setText("Nome:");
+        labelNome.setText("Nome:");
 
-        jLabel10.setText("Nome de Usuário:");
+        labelNomeUsuario.setText("Nome de Usuário:");
 
-        jLabel2.setText("Endereço:");
+        labelEndereco.setText("Endereço:");
 
-        jLabel11.setText("Senha:");
+        labelSenha.setText("Senha:");
 
-        jLabel3.setText("Email:");
+        labelEmail.setText("Email:");
 
-        jLabel4.setText("CPF:");
+        labelCPF.setText("CPF:");
 
-        jLabel5.setText("Telefone:");
+        labelTelefone.setText("Telefone:");
 
         textAreaObs.setColumns(20);
         textAreaObs.setRows(5);
-        jScrollPane1.setViewportView(textAreaObs);
+        scrollPanePessoa.setViewportView(textAreaObs);
 
         javax.swing.GroupLayout panelPessoaLayout = new javax.swing.GroupLayout(panelPessoa);
         panelPessoa.setLayout(panelPessoaLayout);
@@ -181,12 +181,12 @@ public final class CadastroDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPessoaLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(labelEmail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
+                        .addComponent(labelCPF)
                         .addGap(197, 197, 197))
                     .addGroup(panelPessoaLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addComponent(labelObs)
                         .addGap(493, 493, 493))
                     .addGroup(panelPessoaLayout.createSequentialGroup()
                         .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,9 +198,9 @@ public final class CadastroDialog extends javax.swing.JDialog {
                                 .addComponent(formattedTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelPessoaLayout.createSequentialGroup()
                                 .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5)
+                                    .addComponent(labelNome)
+                                    .addComponent(labelEndereco)
+                                    .addComponent(labelTelefone)
                                     .addComponent(labelCnpj)
                                     .addComponent(formattedTextFieldCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(textFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -209,12 +209,12 @@ public final class CadastroDialog extends javax.swing.JDialog {
                                     .addGroup(panelPessoaLayout.createSequentialGroup()
                                         .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(panelPessoaLayout.createSequentialGroup()
-                                                .addComponent(jLabel10)
+                                                .addComponent(labelNomeUsuario)
                                                 .addGap(0, 49, Short.MAX_VALUE))
                                             .addComponent(textFieldLoginName))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel11)
+                                            .addComponent(labelSenha)
                                             .addComponent(passwordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPessoaLayout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
@@ -223,23 +223,23 @@ public final class CadastroDialog extends javax.swing.JDialog {
                                         .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(labelQteAnimais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(spinnerQteAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addComponent(jScrollPane1))
+                            .addComponent(scrollPanePessoa))
                         .addContainerGap())))
         );
         panelPessoaLayout.setVerticalGroup(
             panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPessoaLayout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(labelNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(labelEndereco)
                 .addGap(4, 4, 4)
                 .addComponent(textFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(labelEmail)
+                    .addComponent(labelCPF))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,13 +248,13 @@ public final class CadastroDialog extends javax.swing.JDialog {
                 .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPessoaLayout.createSequentialGroup()
                         .addGroup(panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel10))
+                            .addComponent(labelTelefone)
+                            .addComponent(labelNomeUsuario))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(textFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panelPessoaLayout.createSequentialGroup()
-                            .addComponent(jLabel11)
+                            .addComponent(labelSenha)
                             .addGap(30, 30, 30))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPessoaLayout.createSequentialGroup()
                             .addGap(20, 20, 20)
@@ -276,9 +276,9 @@ public final class CadastroDialog extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(formattedTextFieldCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
+                .addComponent(labelObs)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollPanePessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -291,9 +291,8 @@ public final class CadastroDialog extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setText("Remover Animal");
-
-        jScrollPane2.setViewportView(tableListaAnimais);
+        buttonRemoverAnimal.setText("Remover Animal");
+        scrollPaneAnimais.setViewportView(tableListaAnimais);
 
         javax.swing.GroupLayout panelAnimaisLayout = new javax.swing.GroupLayout(panelAnimais);
         panelAnimais.setLayout(panelAnimaisLayout);
@@ -302,11 +301,11 @@ public final class CadastroDialog extends javax.swing.JDialog {
             .addGroup(panelAnimaisLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelAnimaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                    .addComponent(scrollPaneAnimais, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
                     .addGroup(panelAnimaisLayout.createSequentialGroup()
                         .addComponent(buttonCadastrarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonRemoverAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -316,9 +315,9 @@ public final class CadastroDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(panelAnimaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCadastrarAnimal)
-                    .addComponent(jButton1))
+                    .addComponent(buttonRemoverAnimal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollPaneAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -430,27 +429,27 @@ public final class CadastroDialog extends javax.swing.JDialog {
     private javax.swing.JButton buttonCadastrarAnimal;
     private javax.swing.JButton buttonCancelar;
     private javax.swing.JButton buttonOk;
+    private javax.swing.JButton buttonRemoverAnimal;
     private javax.swing.JCheckBox checkBoxJaAdotou;
     private javax.swing.JFormattedTextField formattedTextFieldCnpj;
     private javax.swing.JFormattedTextField formattedTextFieldCpf;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelCPF;
     private javax.swing.JLabel labelCnpj;
+    private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelEndereco;
+    private javax.swing.JLabel labelNome;
+    private javax.swing.JLabel labelNomeUsuario;
+    private javax.swing.JLabel labelObs;
     private javax.swing.JLabel labelQteAnimais;
+    private javax.swing.JLabel labelSenha;
+    private javax.swing.JLabel labelTelefone;
     private javax.swing.JPanel panelAnimais;
     private javax.swing.JPanel panelPessoa;
     private javax.swing.JPasswordField passwordFieldSenha;
     private javax.swing.JRadioButton radioButtonAdotante;
     private javax.swing.JRadioButton radioButtonCuidador;
+    private javax.swing.JScrollPane scrollPaneAnimais;
+    private javax.swing.JScrollPane scrollPanePessoa;
     private javax.swing.JSpinner spinnerQteAnimais;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JTable tableListaAnimais;
@@ -460,5 +459,4 @@ public final class CadastroDialog extends javax.swing.JDialog {
     private javax.swing.JTextField textFieldLoginName;
     private javax.swing.JTextField textFieldNome;
     private javax.swing.JTextField textFieldTelefone;
-
 }

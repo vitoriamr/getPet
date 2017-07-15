@@ -11,9 +11,8 @@ import javax.swing.JOptionPane;
 
 public final class LogarDialog extends javax.swing.JDialog {
 
-
-	private static final long serialVersionUID = -5537378468924874482L;
-	private final Frame parent;
+	private static final long serialVersionUID = 1L;
+    private final Frame parent;
     private AdotanteRN adotanteRN;
     private CuidadorRN cuidadorRN;
     private AnimalRN animalRN;
@@ -50,9 +49,9 @@ public final class LogarDialog extends javax.swing.JDialog {
 
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        labelNomeUsuario = new javax.swing.JLabel();
         textFieldLoginName = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        labelSenha = new javax.swing.JLabel();
         buttonOk = new javax.swing.JButton();
         buttonCancelar = new javax.swing.JButton();
         buttonCadastrar = new javax.swing.JButton();
@@ -62,14 +61,14 @@ public final class LogarDialog extends javax.swing.JDialog {
         setTitle("GetPet - Identifique-se por favor");
         setResizable(false);
 
-        jLabel1.setText("Nome de Usuário:");
+        labelNomeUsuario.setText("Nome de Usuário:");
 
-        textFieldLoginName.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        textFieldLoginName.setFont(new java.awt.Font("Ubuntu", 1, 15));
         textFieldLoginName.setForeground(java.awt.Color.blue);
 
-        jLabel2.setText("Senha:");
+        labelSenha.setText("Senha:");
 
-        buttonOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pata2.gif"))); // NOI18N
+        buttonOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/pata2.gif")));
         buttonOk.setText("OK");
         buttonOk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonOk.addActionListener(new java.awt.event.ActionListener() {
@@ -86,7 +85,7 @@ public final class LogarDialog extends javax.swing.JDialog {
             }
         });
 
-        buttonCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cadastrar.gif"))); // NOI18N
+        buttonCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/cadastrar.gif")));
         buttonCadastrar.setText("Cadastrar-se");
         buttonCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +94,7 @@ public final class LogarDialog extends javax.swing.JDialog {
             }
         });
 
-        passwordFieldSenha.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        passwordFieldSenha.setFont(new java.awt.Font("Ubuntu", 1, 15));
         passwordFieldSenha.setForeground(java.awt.Color.blue);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -115,8 +114,8 @@ public final class LogarDialog extends javax.swing.JDialog {
                         .addComponent(buttonOk, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                            .addComponent(labelNomeUsuario)
+                            .addComponent(labelSenha))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -124,11 +123,11 @@ public final class LogarDialog extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(labelNomeUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textFieldLoginName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(labelSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -183,8 +182,8 @@ public final class LogarDialog extends javax.swing.JDialog {
     private javax.swing.JButton buttonCadastrar;
     private javax.swing.JButton buttonCancelar;
     private javax.swing.JButton buttonOk;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel labelNomeUsuario;
+    private javax.swing.JLabel labelSenha;
     private javax.swing.JPasswordField passwordFieldSenha;
     private javax.swing.JTextField textFieldLoginName;
 }

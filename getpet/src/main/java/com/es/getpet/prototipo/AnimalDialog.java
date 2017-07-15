@@ -25,6 +25,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
@@ -32,8 +33,8 @@ import javax.swing.filechooser.FileFilter;
 
 public final class AnimalDialog extends JDialog {
 
-	private static final long serialVersionUID = 1207665357976955407L;
-	private Animal animal;
+	private static final long serialVersionUID = 1L;
+    private Animal animal;
     private AnimalRN animalRN;
     private final Frame parent;
     private boolean ok;
@@ -89,7 +90,7 @@ public final class AnimalDialog extends JDialog {
         if (animal.getFoto() != null) {
             byteArrayImagem = animal.getFoto();
             try {
-                labelFoto.setIcon(getIconDoByteArray(byteArrayImagem));
+                labelFoto.setIcon(getIconDoByteArray(byteArrayImagem, labelFoto));
             } catch (IOException e) {
                 animal.setFoto(null);
                 byteArrayImagem = null;
@@ -157,7 +158,6 @@ public final class AnimalDialog extends JDialog {
         comboBoxTemperamento.setSelectedIndex(-1);
     }
 
-
     private byte[] getByteArrayDoArquivo(File arquivo) throws IOException {
         BufferedImage originalImage = ImageIO.read(arquivo);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -165,7 +165,7 @@ public final class AnimalDialog extends JDialog {
         return baos.toByteArray();
     }
 
-    private Icon getIconDoByteArray(byte[] byteArray) throws IOException {
+    public static Icon getIconDoByteArray(byte[] byteArray, JLabel labelFoto) throws IOException {
         BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(byteArray));
         int altura;
         int largura;
@@ -457,7 +457,7 @@ public final class AnimalDialog extends JDialog {
         if (fc.showDialog(parent, "Abrir") == JFileChooser.APPROVE_OPTION) {
             try {
                 byteArrayImagem = getByteArrayDoArquivo(fc.getSelectedFile());
-                labelFoto.setIcon(getIconDoByteArray(byteArrayImagem));
+                labelFoto.setIcon(getIconDoByteArray(byteArrayImagem, labelFoto));
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(this, "Erro ao carregar imagem!\n" + e.getMessage() , "", JOptionPane.ERROR_MESSAGE);
             }
@@ -498,7 +498,7 @@ public final class AnimalDialog extends JDialog {
 
     private final class PreviewImagem extends JComponent implements PropertyChangeListener {
 
-		private static final long serialVersionUID = -1698449083669964164L;
+		private static final long serialVersionUID = 1L;
 		private ImageIcon miniatura;
         private File arquivo;
 
@@ -589,5 +589,4 @@ public final class AnimalDialog extends JDialog {
     private javax.swing.JTextField textFieldDoencasLimitacoes;
     private javax.swing.JTextField textFieldNome;
     private javax.swing.JTextField textFieldRaca;
-
 }

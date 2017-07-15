@@ -8,19 +8,21 @@ import com.es.getpet.core.rn.AnimalRN;
 import com.es.getpet.core.rn.CuidadorRN;
 import com.es.getpet.core.util.Ordem;
 import com.es.getpet.core.util.PropriedadesLista;
+import java.awt.Color;
 import static java.awt.EventQueue.invokeLater;
 import java.util.List;
 
 public final class Principal extends javax.swing.JFrame {
 
-	private static final long serialVersionUID = 430117280423497207L;
-	private final AnimalRN animalRN;
+	private static final long serialVersionUID = 1L;
+    private final AnimalRN animalRN;
     private final CuidadorRN cuidadorRN;
     private final AdotanteRN adotanteRN;
     private Adotante adotante;
     private Cuidador cuidador;
     private List<Animal> listaAnimais;
     private ModeloTabela<Animal> modeloTabela;
+    private static final String ROTULO_BOTAO_ADOTAR = "ADOTAR !!!";
 
     public Principal() {
         initComponents();
@@ -52,9 +54,14 @@ public final class Principal extends javax.swing.JFrame {
         }
         if (isLogado()) {
             buttonLogar.setText("Desconectar");
+            buttonAdotar.setForeground(Color.RED);
+            buttonAdotar.setText("<html><b>" + ROTULO_BOTAO_ADOTAR + "</b></html>");
         } else {
             buttonLogar.setText("Logar");
+            buttonAdotar.setForeground(Color.GRAY);
+            buttonAdotar.setText(ROTULO_BOTAO_ADOTAR);
         }
+        buttonAdotar.setEnabled(isLogado());
         setTitle(titulo);
         atualizaTabela();
     }
@@ -66,11 +73,12 @@ public final class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonLogar = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        tabbedPaneListaDeAnimais = new javax.swing.JTabbedPane();
+        scrollPaneListaDeAnimais = new javax.swing.JScrollPane();
         tableListaAnimais = new javax.swing.JTable();
         buttonVisualizar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        buttonSair = new javax.swing.JButton();
+        buttonAdotar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GetPet - Protótipo v 1.0.0");
@@ -90,9 +98,9 @@ public final class Principal extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setViewportView(tableListaAnimais);
+        scrollPaneListaDeAnimais.setViewportView(tableListaAnimais);
 
-        jTabbedPane1.addTab("Lista de Animais", jScrollPane1);
+        tabbedPaneListaDeAnimais.addTab("Lista de Animais", scrollPaneListaDeAnimais);
 
         buttonVisualizar.setText("Visualizar");
         buttonVisualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -101,10 +109,18 @@ public final class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Sair");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonSair.setText("Sair");
+        buttonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buttonSairActionPerformed(evt);
+            }
+        });
+
+        buttonAdotar.setForeground(new java.awt.Color(255, 0, 0));
+        buttonAdotar.setText("ADOTAR !!!");
+        buttonAdotar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAdotarActionPerformed(evt);
             }
         });
 
@@ -115,25 +131,28 @@ public final class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
+                    .addComponent(tabbedPaneListaDeAnimais, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(buttonLogar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonAdotar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buttonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonLogar, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonAdotar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonSair, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                     .addComponent(buttonVisualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(buttonLogar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(tabbedPaneListaDeAnimais, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -172,8 +191,16 @@ public final class Principal extends javax.swing.JFrame {
         }
     }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {
         dispose();
+    }
+
+    private void buttonAdotarActionPerformed(java.awt.event.ActionEvent evt) {
+        int linha = tableListaAnimais.getSelectedRow();
+        if (linha > -1) {
+            AdotarDialog dlg = new AdotarDialog(this, modeloTabela.get(linha));
+            dlg.setVisible(true);
+        }
     }
 
     public static void main(String args[]) {
@@ -192,11 +219,11 @@ public final class Principal extends javax.swing.JFrame {
         });
     }
 
+    private javax.swing.JButton buttonAdotar;
     private javax.swing.JButton buttonLogar;
+    private javax.swing.JButton buttonSair;
     private javax.swing.JButton buttonVisualizar;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane scrollPaneListaDeAnimais;
+    private javax.swing.JTabbedPane tabbedPaneListaDeAnimais;
     private javax.swing.JTable tableListaAnimais;
-
 }
