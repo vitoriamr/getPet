@@ -292,6 +292,12 @@ public final class CadastroDialog extends javax.swing.JDialog {
         });
 
         buttonRemoverAnimal.setText("Remover Animal");
+        buttonRemoverAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRemoverAnimalActionPerformed(evt);
+            }
+        });
+
         scrollPaneAnimais.setViewportView(tableListaAnimais);
 
         javax.swing.GroupLayout panelAnimaisLayout = new javax.swing.GroupLayout(panelAnimais);
@@ -396,7 +402,7 @@ public final class CadastroDialog extends javax.swing.JDialog {
             if (radioButtonCuidador.isSelected()) {
                 cuidador = new Cuidador();
                 preencheAtributosCuidador();
-                cuidadorRN.salva(cuidador);
+                cuidador = cuidadorRN.salva(cuidador);
             } else {
                 adotante = new Adotante();
                 preencheAtributosAdotante();
@@ -424,6 +430,9 @@ public final class CadastroDialog extends javax.swing.JDialog {
             listaAnimais.add(dlg.getAnimal());
         }
         atualizaTabelaListaAnimais();
+    }
+
+    private void buttonRemoverAnimalActionPerformed(java.awt.event.ActionEvent evt) {
     }
 
     private javax.swing.JButton buttonCadastrarAnimal;

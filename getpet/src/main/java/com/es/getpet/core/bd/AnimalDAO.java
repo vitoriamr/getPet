@@ -5,12 +5,16 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
+import com.es.getpet.core.ed.Adocao;
 import com.es.getpet.core.ed.Animal;
+import com.es.getpet.core.ed.Cuidador;
 import com.es.getpet.core.util.DAO;
 import com.es.getpet.core.util.PropriedadesLista;
 import com.es.getpet.core.util.TipoJuncao;
@@ -62,6 +66,48 @@ public class AnimalDAO extends DAO<Animal> {
 		arrayPredicados = listaPredicados.toArray(arrayPredicados);
 		criteria.where(builder.and(arrayPredicados));
     	return criteria;
+    }
+
+    public List<Animal> getListaAnimaisDisponiveis() {
+    	Session session = getSession();
+    	session.beginTransaction();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Animal> criteria = builder.createQuery(Animal.class);
+		Root<Animal> raiz = criteria.from(Animal.class);
+		Join<Animal, Adocao> adocao = raiz.join("adocao", JoinType.LEFT);
+
+		List<Predicate> listaPredicados = new ArrayList<>();
+		listaPredicados.add(builder.isNull(raiz.get("adocao")));
+		listaPredicados.add(builder.greaterThan(adocao.get("statusAdocao"), 2));
+
+		Predicate[] arrayPredicados = new Predicate[listaPredicados.size()];
+		arrayPredicados = listaPredicados.toArray(arrayPredicados);
+		criteria.where(builder.or(arrayPredicados));
+
+		List<Animal> lista = session.createQuery(criteria).getResultList();
+		session.getTransaction().commit();
+		return lista;
+    }
+
+    public List<Animal> getListaAnimaisCuidador(Cuidador cuidador) {
+    	Session session = getSession();
+    	session.beginTransaction();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
+		CriteriaQuery<Animal> criteria = builder.createQuery(Animal.class);
+		Root<Animal> raiz = criteria.from(Animal.class);
+		Join<Animal, Adocao> adocao = raiz.join("adocao", JoinType.LEFT);
+
+		List<Predicate> listaPredicados = new ArrayList<>();
+		listaPredicados.add(builder.isNull(raiz.get("adocao")));
+		listaPredicados.add(builder.greaterThan(adocao.get("statusAdocao"), 2));
+
+		Predicate[] arrayPredicados = new Predicate[listaPredicados.size()];
+		arrayPredicados = listaPredicados.toArray(arrayPredicados);
+		criteria.where(builder.and(builder.equal(raiz.get("cuidador"), cuidador), builder.or(arrayPredicados)));
+
+		List<Animal> lista = session.createQuery(criteria).getResultList();
+		session.getTransaction().commit();
+		return lista;
     }
 
 }

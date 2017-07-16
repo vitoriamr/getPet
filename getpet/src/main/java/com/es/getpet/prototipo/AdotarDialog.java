@@ -1,24 +1,32 @@
 package com.es.getpet.prototipo;
 
+import com.es.getpet.core.ed.Adocao;
+import com.es.getpet.core.ed.Adotante;
+import com.es.getpet.core.ed.Animal;
+import com.es.getpet.core.rn.AdocaoRN;
+import com.es.getpet.core.enuns.StatusAdocao;
 import java.awt.Frame;
 import java.io.IOException;
-
-import com.es.getpet.core.ed.Animal;
+import javax.swing.JOptionPane;
 
 public final class AdotarDialog extends javax.swing.JDialog {
 
-	private static final long serialVersionUID = 1L;
-	private Animal animal;
+    private static final long serialVersionUID = 1L;
+    private Animal animal;
+    private Adotante adotante;
+    private AdocaoRN adocaoRN;
 
     public AdotarDialog(Frame parent, boolean modal) {
         super(parent, modal);
+        adocaoRN = new AdocaoRN();
         initComponents();
         setLocationRelativeTo(parent);
     }
 
-    public AdotarDialog(Frame parent, Animal animal) {
+    public AdotarDialog(Frame parent, Animal animal, Adotante adotante) {
         this(parent, true);
         this.animal = animal;
+        this.adotante = adotante;
         atualizaFormulario();
     }
 
@@ -67,6 +75,11 @@ public final class AdotarDialog extends javax.swing.JDialog {
 
         buttonCandiataAdocao.setText("Sou candidato para Adoção");
         buttonCandiataAdocao.setEnabled(false);
+        buttonCandiataAdocao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCandiataAdocaoActionPerformed(evt);
+            }
+        });
 
         buttonCancelar.setText("Cancelar");
 
@@ -98,6 +111,7 @@ public final class AdotarDialog extends javax.swing.JDialog {
         scrollPane.setViewportView(textAreaObs);
 
         labelSexoAnimal.setForeground(new java.awt.Color(0, 0, 255));
+        labelSexoAnimal.setText("jLabel2");
 
         labelRacaAnimal.setForeground(new java.awt.Color(0, 0, 255));
         labelRacaAnimal.setText("jLabel2");
@@ -223,6 +237,20 @@ public final class AdotarDialog extends javax.swing.JDialog {
         buttonCandiataAdocao.setEnabled(checkBoxTermoResponsabilidade.isSelected());
     }
 
+    private void buttonCandiataAdocaoActionPerformed(java.awt.event.ActionEvent evt) {
+        Adocao adocao = new Adocao();
+        adocao.setAnimal(animal);
+        adocao.setCuidador(animal.getCuidador());
+        adocao.setAdotante(adotante);
+        adocao.setStatusAdocao(StatusAdocao.CANDIDATO_ADOCAO);
+
+        if (adocaoRN.adotaAnimal(adocao)) {
+            JOptionPane.showMessageDialog(this, "Você é candidato a adoção de " + animal.getNome() + "\n" +
+                    "Aguarde a aprovação do Cuidador!", "Candidato a Adoção", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+        }
+    }
+
     private javax.swing.JButton buttonCancelar;
     private javax.swing.JButton buttonCandiataAdocao;
     private javax.swing.JCheckBox checkBoxTermoResponsabilidade;
@@ -243,4 +271,5 @@ public final class AdotarDialog extends javax.swing.JDialog {
     private javax.swing.JLabel labelTratamento;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTextArea textAreaObs;
+
 }

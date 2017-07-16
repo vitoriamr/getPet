@@ -25,10 +25,11 @@ public class CuidadorDAO extends DAO<Cuidador> {
         try {
             try {
                 session.beginTransaction();
+                session.save(cuidador);
                 for (Animal animal : cuidador.getListaAnimais()) {
+                	animal.setCuidador(cuidador);
                 	session.save(animal);
                 }
-                session.save(cuidador);
                 session.flush();
                 session.clear();
                 session.getTransaction().commit();

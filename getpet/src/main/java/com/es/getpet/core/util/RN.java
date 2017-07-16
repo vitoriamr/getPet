@@ -51,4 +51,8 @@ public class RN<E extends ED> {
     	HibernateUtil.fechaSessao();
     }
 
+    public VAL<E> getVal() {
+    	return val;
+    }
+
 }

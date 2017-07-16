@@ -34,7 +34,7 @@ import javax.swing.filechooser.FileFilter;
 public final class AnimalDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-    private Animal animal;
+	private Animal animal;
     private AnimalRN animalRN;
     private final Frame parent;
     private boolean ok;
@@ -157,6 +157,7 @@ public final class AnimalDialog extends JDialog {
         comboBoxTemperamento.setModel(new DefaultComboBoxModel(Temperamento.values()));
         comboBoxTemperamento.setSelectedIndex(-1);
     }
+
 
     private byte[] getByteArrayDoArquivo(File arquivo) throws IOException {
         BufferedImage originalImage = ImageIO.read(arquivo);
@@ -498,8 +499,8 @@ public final class AnimalDialog extends JDialog {
 
     private final class PreviewImagem extends JComponent implements PropertyChangeListener {
 
-		private static final long serialVersionUID = 1L;
-		private ImageIcon miniatura;
+        private static final long serialVersionUID = 1L;
+        private ImageIcon miniatura;
         private File arquivo;
 
         public PreviewImagem(JFileChooser fc) {

@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 public final class LogarDialog extends javax.swing.JDialog {
 
 	private static final long serialVersionUID = 1L;
-    private final Frame parent;
+	private final Frame parent;
     private AdotanteRN adotanteRN;
     private CuidadorRN cuidadorRN;
     private AnimalRN animalRN;

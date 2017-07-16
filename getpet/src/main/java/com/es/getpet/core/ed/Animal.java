@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.es.getpet.core.enuns.Especie;
@@ -50,12 +51,15 @@ public class Animal extends ED {
     @Column
 	private String obs;
 
-    @Column
+    @Column(length = 1002400)
     @Lob
     private byte[] foto;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Cuidador cuidador;
+
+    @OneToOne
+    private Adocao adocao;
 
 	public String getNome() {
 		return nome;
@@ -159,6 +163,14 @@ public class Animal extends ED {
 
 	public void setFoto(byte[] foto) {
 		this.foto = foto;
+	}
+
+	public Adocao getAdocao() {
+		return adocao;
+	}
+
+	public void setAdocao(Adocao adocao) {
+		this.adocao = adocao;
 	}
 
 }

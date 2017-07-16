@@ -7,7 +7,7 @@ import javax.swing.table.AbstractTableModel;
 public abstract class ModeloTabela<E extends ED> extends AbstractTableModel {
 
 	private static final long serialVersionUID = 1L;
-    private List<E> lista;
+	private List<E> lista;
 
     public ModeloTabela() {}
 

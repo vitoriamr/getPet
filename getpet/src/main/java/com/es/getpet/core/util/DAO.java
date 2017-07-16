@@ -15,8 +15,6 @@ public abstract class DAO<E extends ED> {
             try {
                 session.beginTransaction();
                 session.save(ed);
-                session.flush();
-                session.clear();
                 session.getTransaction().commit();
             } catch (HibernateException e) {
                 if (session.getTransaction() != null && session.getTransaction().isActive()) {
