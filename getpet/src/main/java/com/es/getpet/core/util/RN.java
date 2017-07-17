@@ -55,4 +55,8 @@ public class RN<E extends ED> {
     	return val;
     }
 
+    public DAO<E> getDao() {
+    	return bd;
+    }
+
 }

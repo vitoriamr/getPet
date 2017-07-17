@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
 
 public final class CadastroDialog extends javax.swing.JDialog {
 
-	private static final long serialVersionUID = 1L;
-	private CuidadorRN cuidadorRN;
+    private static final long serialVersionUID = 1L;
+    private CuidadorRN cuidadorRN;
     private AdotanteRN adotanteRN;
     private AnimalRN animalRN;
     private Cuidador cuidador;
@@ -106,6 +106,8 @@ public final class CadastroDialog extends javax.swing.JDialog {
         return adotante;
     }
 
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         tabbedPane = new javax.swing.JTabbedPane();
@@ -395,9 +397,9 @@ public final class CadastroDialog extends javax.swing.JDialog {
         );
 
         pack();
-    }
+    }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonOkActionPerformed(java.awt.event.ActionEvent evt) {
+    private void buttonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOkActionPerformed
         try {
             if (radioButtonCuidador.isSelected()) {
                 cuidador = new Cuidador();
@@ -413,28 +415,30 @@ public final class CadastroDialog extends javax.swing.JDialog {
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
-    }
+    }//GEN-LAST:event_buttonOkActionPerformed
 
-    private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {
+    private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
         dispose();
-    }
+    }//GEN-LAST:event_buttonCancelarActionPerformed
 
-    private void radioButtonCuidadorActionPerformed(java.awt.event.ActionEvent evt) {
+    private void radioButtonCuidadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioButtonCuidadorActionPerformed
         atualizaFormulario(radioButtonCuidador.isSelected());
-    }
+    }//GEN-LAST:event_radioButtonCuidadorActionPerformed
 
-    private void buttonCadastrarAnimalActionPerformed(java.awt.event.ActionEvent evt) {
+    private void buttonCadastrarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarAnimalActionPerformed
         AnimalDialog dlg = new AnimalDialog(parent, animalRN);
         dlg.setVisible(true);
         if (dlg.getAnimal() != null) {
             listaAnimais.add(dlg.getAnimal());
         }
         atualizaTabelaListaAnimais();
-    }
+    }//GEN-LAST:event_buttonCadastrarAnimalActionPerformed
 
-    private void buttonRemoverAnimalActionPerformed(java.awt.event.ActionEvent evt) {
-    }
+    private void buttonRemoverAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoverAnimalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonRemoverAnimalActionPerformed
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCadastrarAnimal;
     private javax.swing.JButton buttonCancelar;
     private javax.swing.JButton buttonOk;
@@ -468,4 +472,5 @@ public final class CadastroDialog extends javax.swing.JDialog {
     private javax.swing.JTextField textFieldLoginName;
     private javax.swing.JTextField textFieldNome;
     private javax.swing.JTextField textFieldTelefone;
+    // End of variables declaration//GEN-END:variables
 }

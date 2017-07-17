@@ -271,5 +271,4 @@ public final class AdotarDialog extends javax.swing.JDialog {
     private javax.swing.JLabel labelTratamento;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTextArea textAreaObs;
-
 }

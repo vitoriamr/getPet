@@ -33,8 +33,8 @@ import javax.swing.filechooser.FileFilter;
 
 public final class AnimalDialog extends JDialog {
 
-	private static final long serialVersionUID = 1L;
-	private Animal animal;
+    private static final long serialVersionUID = 1L;
+    private Animal animal;
     private AnimalRN animalRN;
     private final Frame parent;
     private boolean ok;
@@ -140,8 +140,7 @@ public final class AnimalDialog extends JDialog {
         animal.setFoto(byteArrayImagem);
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-	private void carregaCombos() {
+    private void carregaCombos() {
         comboBoxUnidade.setModel(new javax.swing.DefaultComboBoxModel(Unidade.values()));
         comboBoxUnidade.setSelectedIndex(-1);
 
@@ -193,6 +192,8 @@ public final class AnimalDialog extends JDialog {
         return extensao;
     }
 
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         textFieldNome = new javax.swing.JTextField();
@@ -425,9 +426,9 @@ public final class AnimalDialog extends JDialog {
         );
 
         pack();
-    }
+    }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {
+    private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
         if (animal == null) {
             animal = new Animal();
         }
@@ -442,19 +443,19 @@ public final class AnimalDialog extends JDialog {
             JOptionPane.showMessageDialog(parent, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
-    }
+    }//GEN-LAST:event_buttonSalvarActionPerformed
 
-    private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {
+    private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
         dispose();
-    }
+    }//GEN-LAST:event_buttonCancelarActionPerformed
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         if (!ok) {
             animal = null;
         }
-    }
+    }//GEN-LAST:event_formWindowClosed
 
-    private void buttonFotoActionPerformed(java.awt.event.ActionEvent evt) {
+    private void buttonFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFotoActionPerformed
         if (fc.showDialog(parent, "Abrir") == JFileChooser.APPROVE_OPTION) {
             try {
                 byteArrayImagem = getByteArrayDoArquivo(fc.getSelectedFile());
@@ -463,13 +464,13 @@ public final class AnimalDialog extends JDialog {
                 JOptionPane.showMessageDialog(this, "Erro ao carregar imagem!\n" + e.getMessage() , "", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }
+    }//GEN-LAST:event_buttonFotoActionPerformed
 
-    private void comboBoxUnidadeActionPerformed(java.awt.event.ActionEvent evt) {
+    private void comboBoxUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxUnidadeActionPerformed
         if (!editavel && animal != null) {
             atualizaCampos();
         }
-    }
+    }//GEN-LAST:event_comboBoxUnidadeActionPerformed
 
     private class ImageFilter extends FileFilter {
 
@@ -564,6 +565,7 @@ public final class AnimalDialog extends JDialog {
         }
     }
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancelar;
     private javax.swing.JButton buttonFoto;
     private javax.swing.JButton buttonSalvar;
@@ -590,4 +592,5 @@ public final class AnimalDialog extends JDialog {
     private javax.swing.JTextField textFieldDoencasLimitacoes;
     private javax.swing.JTextField textFieldNome;
     private javax.swing.JTextField textFieldRaca;
+    // End of variables declaration//GEN-END:variables
 }

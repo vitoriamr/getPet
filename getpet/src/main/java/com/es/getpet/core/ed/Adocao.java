@@ -2,6 +2,7 @@ package com.es.getpet.core.ed;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -14,15 +15,15 @@ import com.es.getpet.core.util.ED;
 public class Adocao extends ED {
 
 	@ManyToOne(optional = false)
-	//@JoinColumn(name="adotante_id")
+	@JoinColumn(name="adotante_id")
 	private Adotante adotante;
 
 	@ManyToOne(optional = false)
-	//@JoinColumn(name="cuidador_id")
+	@JoinColumn(name="cuidador_id")
 	private Cuidador cuidador;
 
 	@OneToOne(optional = false)
-	//@JoinColumn(name="animal_id")
+	@JoinColumn(name="animal_id")
 	private Animal animal;
 
 	@Column(nullable = false)
