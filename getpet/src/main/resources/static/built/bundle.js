@@ -22265,7 +22265,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".menu {\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tposition: relative;\r\n\twidth: 15%;\r\n}\r\n\r\n.menu__button {\r\n\tbox-sizing: border-box;\r\n\tpadding-bottom: 20px;\r\n\tpadding-top: 20px;\r\n\ttext-align: center;\r\n\twidth: 100%;\r\n}\r\n\r\n.menu__button:hover {\r\n\tbackground-color: #5e503f;\r\n\tcolor: #eae0d5;\r\n\tcursor: pointer;\r\n}\r\n\r\n.menu__links--container {\r\n\tposition: relative;\r\n\twidth: 100%;\r\n}\r\n\r\n.menu__links {\r\n\tbackground-color: #5e503f;\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tposition: absolute;\r\n\twidth: 100%;\r\n\tz-index: 2;\r\n}\r\n\r\n.menu__links__item {\r\n\tbox-sizing: border-box;\r\n\tcolor: #eae0d5;\r\n\tpadding-bottom: 10px;\r\n\tpadding-left: 20px;\r\n\tpadding-top: 10px;\r\n\ttext-decoration: none;\r\n\twidth: 100%;\r\n}\r\n\r\n.menu__links__item:hover {\r\n\tbackground-color: #c6ac8f;\r\n\tcolor: #0a0908;\r\n}", ""]);
+	exports.push([module.id, ".menu {\n\tdisplay: flex;\n\tflex-direction: column;\n\tposition: relative;\n\twidth: 15%;\n}\n\n.menu__button {\n\tbox-sizing: border-box;\n\tpadding-bottom: 20px;\n\tpadding-top: 20px;\n\ttext-align: center;\n\twidth: 100%;\n}\n\n.menu__button:hover {\n\tbackground-color: #5e503f;\n\tcolor: #eae0d5;\n\tcursor: pointer;\n}\n\n.menu__links--container {\n\tposition: relative;\n\twidth: 100%;\n}\n\n.menu__links {\n\tbackground-color: #5e503f;\n\tdisplay: flex;\n\tflex-direction: column;\n\tposition: absolute;\n\twidth: 100%;\n\tz-index: 2;\n}\n\n.menu__links__item {\n\tbox-sizing: border-box;\n\tcolor: #eae0d5;\n\tpadding-bottom: 10px;\n\tpadding-left: 20px;\n\tpadding-top: 10px;\n\ttext-decoration: none;\n\twidth: 100%;\n}\n\n.menu__links__item:hover {\n\tbackground-color: #c6ac8f;\n\tcolor: #0a0908;\n}", ""]);
 	
 	// exports
 
@@ -22846,7 +22846,7 @@
 	
 	
 	// module
-	exports.push([module.id, "header {\r\n\tbackground-color: #c6ac8f;\r\n\twidth: 100%;\r\n}", ""]);
+	exports.push([module.id, "header {\n\tbackground-color: #c6ac8f;\n\twidth: 100%;\n}", ""]);
 	
 	// exports
 
@@ -23488,7 +23488,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".content {\r\n\tbox-sizing: border-box;\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\tmargin: auto;\r\n\tpadding-top: 5%;\r\n\twidth: 70%;\r\n}\r\n\r\n.content__title {\r\n\tbackground-color: #22333b;\r\n\tcolor: #eae0d5;\r\n\tdisplay: inline-block;\r\n\tmargin-left: 1%;\r\n\tpadding-left: 1%;\r\n\tpadding-right: 1%;\r\n}", ""]);
+	exports.push([module.id, ".content {\n\tbox-sizing: border-box;\n\tdisplay: flex;\n\tflex-direction: column;\n\tmargin: auto;\n\tpadding-top: 5%;\n\twidth: 70%;\n}\n\n.content__title {\n\tbackground-color: #22333b;\n\tcolor: #eae0d5;\n\tdisplay: inline-block;\n\tmargin-left: 1%;\n\tpadding-left: 1%;\n\tpadding-right: 1%;\n}", ""]);
 	
 	// exports
 
@@ -23533,7 +23533,7 @@
 	
 	
 	// module
-	exports.push([module.id, "html, body {\r\n\tcolor: #0a0908;\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n}", ""]);
+	exports.push([module.id, "html, body {\n\tcolor: #0a0908;\n\tmargin: 0;\n\tpadding: 0;\n}", ""]);
 	
 	// exports
 
