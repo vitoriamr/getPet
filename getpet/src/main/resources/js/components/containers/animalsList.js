@@ -63,7 +63,6 @@ export default class AnimalsList extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1 className={ `content__title` }>{ `Lista de Animais` }</h1>
 				{ this.getCorrectView() }
 			</div>
 		)

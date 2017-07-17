@@ -8,7 +8,8 @@ export default class Root extends React.Component {
 		super(props)
 		
 		this.state = {
-			animais: []
+			animais: [],
+			page: 'listView'
 		}
 	}
 	
@@ -23,10 +24,17 @@ export default class Root extends React.Component {
 			})
 	}
 	
+	goToSignUp() {
+		let page = 'signUpView'
+		this.setState( { page } )
+	}
+	
 	render() {
 		return (
 			<RootView
 				animais={ this.state.animais }
+				goToSignUp={ this.goToSignUp.bind( this ) }
+				page={ this.state.page }
 			/>
 		)
 	}

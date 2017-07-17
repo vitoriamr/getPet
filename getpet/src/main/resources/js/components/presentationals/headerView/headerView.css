@@ -1,4 +1,21 @@
 header {
+	align-items: stretch;
 	background-color: #c6ac8f;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 	width: 100%;
+}
+
+.header__signup__button {
+	align-items: center;
+	background-color: #5e503f;
+	display: flex;
+	padding-left: 1vw;
+	padding-right: 1vw;
+}
+
+.header__signup__button:hover {
+	background-color: #c6ac8f;
+	cursor: pointer;
 }

@@ -1,0 +1,29 @@
+.select-profile {
+	display: flex;
+	justify-content: space-around;
+}
+
+.select-profile__item {
+	align-items: stretch;
+	display: flex;
+	flex-basis: 0;
+	flex-direction: column;
+	flex-grow: 1;
+	margin-left: 5vw;
+	margin-right: 5vw;
+}
+
+.select-profile__item:hover {
+	background-color: #f0f0f0;
+	cursor: pointer;
+}
+
+.select-profile__item__title {
+	text-align: center;
+}
+
+.select-profile__item__description {
+	flex-basis: 0;
+	flex-grow: 1;
+	text-align: center;
+}

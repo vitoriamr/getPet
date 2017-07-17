@@ -8,10 +8,26 @@ export default class Header extends React.Component {
 		super(props)
 	}
 	
+	getRightSection() {
+		if ( false ) {
+			return
+		} else {
+			return (
+				<div
+					className={ `header__signup__button` }
+					onClick={ this.props.goToSignUp }
+				>
+					{ `CADASTRO` }
+				</div>
+			)
+		}
+	}
+	
 	render() {
 		return (
 			<header>
 				<Menu />
+				{ this.getRightSection() }
 			</header>
 		)
 	}

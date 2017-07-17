@@ -3,3 +3,60 @@ html, body {
 	margin: 0;
 	padding: 0;
 }
+
+.content {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	padding-top: 5%;
+	width: 70%;
+}
+
+.content__title {
+	background-color: #22333b;
+	color: #eae0d5;
+	display: inline-block;
+	margin-left: 1%;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+
+.sign-up__steps {
+	align-items: stretch;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-bottom: 2vh;
+}
+
+.sign-up__steps__step {
+	flex-basis: 0;
+	flex-grow: 1;
+	text-align: center;
+	padding-bottom: 1vh;
+	padding-top: 1vh;
+}
+
+.sign-up__steps__step--active {
+	background-color: #c6ac8f;
+	flex-basis: 0;
+	flex-grow: 1;
+	text-align: center;
+	padding-bottom: 1vh;
+	padding-top: 1vh;
+}
+
+.sign-up__steps__step--completed {
+	background-color: #5e503f;
+	flex-basis: 0;
+	flex-grow: 1;
+	text-align: center;
+	padding-bottom: 1vh;
+	padding-top: 1vh;
+}
+
+.sign-up__steps__step--completed:hover {
+	background-color: #c6ac8f;
+	cursor: pointer;
+}

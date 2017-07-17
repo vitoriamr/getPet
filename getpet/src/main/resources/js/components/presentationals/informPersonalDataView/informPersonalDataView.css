@@ -1,0 +1,55 @@
+.inform-personal-data {
+	align-items: stretch;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.inform-personal-data__row {
+	align-items: stretch;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-bottom: 1vh;
+	margin-top: 1vh;
+}
+
+.inform-personal-data__row--buttons {
+	align-items: stretch;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+.inform-personal-data__button--next-step {
+	background-color: #c6ac8f;
+	padding: 1vh 2vw;
+}
+
+.inform-personal-data__button--next-step:hover {
+	background-color: #5e503f;
+	cursor: pointer;
+	padding: 1vh 2vw;
+}
+
+.inform-personal-data__label {
+	width: 30%;
+}
+
+.inform-personal-data__input {
+	width: 70%;
+}
+
+.inform-personal-data__choice {
+	padding: 1vh 2vw;
+}
+
+.inform-personal-data__choice--selected {
+	background-color: #f0f0f0;
+	padding: 1vh 2vw;
+}
+
+.inform-personal-data__choice:hover {
+	background-color: #f0f0f0;
+	cursor: pointer;
+}

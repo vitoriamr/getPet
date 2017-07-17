@@ -1,0 +1,41 @@
+.inform-additional-data {
+	align-items: stretch;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.inform-additional-data__row {
+	align-items: stretch;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-bottom: 1vh;
+	margin-top: 1vh;
+}
+
+.inform-additional-data__row--buttons {
+	align-items: stretch;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+.inform-additional-data__button--save {
+	background-color: #c6ac8f;
+	padding: 1vh 2vw;
+}
+
+.inform-additional-data__button--save:hover {
+	background-color: #5e503f;
+	cursor: pointer;
+	padding: 1vh 2vw;
+}
+
+.inform-additional-data__label {
+	width: 30%;
+}
+
+.inform-additional-data__input {
+	width: 70%;
+}
